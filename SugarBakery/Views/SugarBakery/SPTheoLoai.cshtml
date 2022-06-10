@@ -1,0 +1,37 @@
+﻿@model IEnumerable<SugarBakery.Models.tbSanPham>
+
+@{
+    ViewBag.Title = "SPTheoLoai";
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
+}
+
+<h3 style="text-align:center; color:red">SẢN PHẨM BÁNH THEO LOẠI</h3>
+<div class="row">
+    @foreach (var sanpham in Model)
+    {
+        <div class="col-sm-4 col-lg-4 cpl-md-4">
+            <div class="thumbnail">
+                <a href="@Url.Action("Details", "SugarBakery", new {id = sanpham.MaLoaiSP})">
+                    <img alt="@sanpham.TenSP" src="~/images/sanpham/@sanpham.Anh" with="170" , height="170" />
+                    <div>
+                        <br />
+                        <h4 style="text-align:center">
+                            @sanpham.TenSP
+                        </h4>
+                        <p></p>
+                    </div>
+                    <div class="ratings">
+                        <p class="pull-right">15 reviews</p>
+                        <p>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 22.375" name="dbSugarBakery">
+  <DataContextMoniker Name="/dbSugarBakeryDataContext" />
+  <nestedChildShapes>
+    <classShape Id="69ac9ea1-9738-4782-b511-2b600587d37f" absoluteBounds="3.5, 3.75, 2, 1.193992513020834">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbBanhKem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="82c119d7-8b57-49bb-83b6-ca68361a84c9" absoluteBounds="3.515, 4.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c3e9bb76-ac99-4794-9798-bf25790dbc18" absoluteBounds="0.75, 15.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="83c7609d-3e06-4a7a-8182-bb12a94e7ae9" absoluteBounds="0.765, 15.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0a248bfb-b879-4a37-8d30-a2daa560a190" absoluteBounds="9, 12.875, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbBinhLuan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b946cc70-74d9-441b-8c96-15850f3db9a3" absoluteBounds="9.015, 13.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2105e853-d0ac-48dc-9ae3-297f16fcad5d" absoluteBounds="9, 9.625, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbChiTietDonHang" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c9f3751f-1ccb-45b1-9327-1300375a276c" absoluteBounds="9.015, 10.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="22c52112-a88c-4426-8260-97a7100de413" absoluteBounds="6.25, 14.125, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbDonHang" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ada1d26f-03cd-495f-a35c-8104c3dae547" absoluteBounds="6.265, 14.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ae090282-9924-493a-be5f-7f1138e54c86" absoluteBounds="3.5, 9.75, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbDonViTinh" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3cb74d1b-ea6f-4102-a25d-b8fbdf251fc4" absoluteBounds="3.515, 10.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="836c6680-5e1f-4b87-b83e-0dab90ecfedf" absoluteBounds="3.5, 15.5, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbKhachHang" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0cd72137-7cba-458f-8627-d542142287df" absoluteBounds="3.515, 15.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="76953b0a-1565-474f-96ec-c054bcaf5c90" absoluteBounds="6.25, 2.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbKhuyenMai" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8f4889a5-247b-41b4-9de4-f8b22bff77a5" absoluteBounds="6.265, 2.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b96e7fab-f5be-416c-9422-23c8cdf8d4e4" absoluteBounds="1.5, 18.875, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbLoaiNguoiDung" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ec909c3d-77ca-4e6d-b8a1-3a4d7b3dc1fd" absoluteBounds="1.5150000000000001, 19.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a5aaaa1a-fda5-4be7-a402-62d372e6d44e" absoluteBounds="3.5, 6.625, 2, 1.7708968098958335">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbLoaiSanPham" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d5f33e52-b52f-4611-8603-a60aba567958" absoluteBounds="3.515, 7.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5b731caf-8480-45a7-8075-7319ee6d0eff" absoluteBounds="12, 6, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbLoHang" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ae0d14ca-a299-48cc-b4c8-48f73b83ecc7" absoluteBounds="12.015, 6.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cbbfb6db-4719-4f6d-9841-3b698f7ba64d" absoluteBounds="6.25, 10.5, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbMonNgon" />
+      <nestedChildShapes>
+        <elementListCompartment Id="49d1d06d-a7c5-47f2-a188-cf779745617c" absoluteBounds="6.265, 10.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4ed80af3-cac7-46b2-aeb3-f27a0c07d1c7" absoluteBounds="9, 6.875, 2, 1.1939925130208326">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbNguyenLieu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3938460f-a4fb-413a-ac5d-7babe1916571" absoluteBounds="9.015, 7.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ee6175e7-e60f-4be2-a48e-a42c35f576f0" absoluteBounds="9.25, 1.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbNhaCungCap" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4344f04b-5f77-407b-b699-36a50a439796" absoluteBounds="9.265, 2.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a3b3fba5-a955-41e3-9e18-d80e63248ba0" absoluteBounds="3.5, 20.875, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbNhanVien" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9a5e2a62-c7ac-47d8-9e6e-b75e67920f0e" absoluteBounds="3.515, 21.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="53430633-b06b-484c-b53d-258a70f2e106" absoluteBounds="0.75, 6.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbNhom" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eb2cee56-6e71-498a-8720-b0b79657fa2e" absoluteBounds="0.765, 7.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="91b05a45-2333-48f3-94fd-230cfce71781" absoluteBounds="0.75, 0.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbQuangCao" />
+      <nestedChildShapes>
+        <elementListCompartment Id="36c6995c-a968-4e30-8530-f6bd22c2074e" absoluteBounds="0.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6efcca25-bba6-436d-ac58-9a1157ff871d" absoluteBounds="6.25, 6.125, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbSanPham" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fcbf1bce-ef3b-4a1b-b5cf-ba6c313cd46c" absoluteBounds="6.265, 6.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6feb3495-93dd-4363-8982-3bb5c2603de9" absoluteBounds="9, 4.875, 2, 1.1939925130208326">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbSanPhamKhuyenMai" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c80b4b67-bd6a-402e-bb87-3557e2512320" absoluteBounds="9.015, 5.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="26f62d40-5be3-468b-98ee-df24e4fb23b2" absoluteBounds="3.5, 13.25, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbTinhTrangHoaDon" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bf60d4f4-b379-4e39-b5d6-6b3b89d492ee" absoluteBounds="3.515, 13.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 14.125); (8.625 : 13.75); (8.625 : 10.5104484049479); (8.72916666666667 : 10.5104484049479 : JumpStart); (8.89583333333333 : 10.5104484049479 : JumpEnd); (9 : 10.5104484049479)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbDonHang/tbDonHang_tbChiTietDonHang" />
+      <nodes>
+        <classShapeMoniker Id="22c52112-a88c-4426-8260-97a7100de413" />
+        <classShapeMoniker Id="2105e853-d0ac-48dc-9ae3-297f16fcad5d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 16.0825512695313); (6.25 : 16.0825512695313)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbKhachHang/tbKhachHang_tbDonHang" />
+      <nodes>
+        <classShapeMoniker Id="836c6680-5e1f-4b87-b83e-0dab90ecfedf" />
+        <classShapeMoniker Id="22c52112-a88c-4426-8260-97a7100de413" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 16.4815991210938); (3.5 : 16.4815991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbUser/tbUser_tbKhachHang" />
+      <nodes>
+        <classShapeMoniker Id="c3e9bb76-ac99-4794-9798-bf25790dbc18" />
+        <classShapeMoniker Id="836c6680-5e1f-4b87-b83e-0dab90ecfedf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.125 : 18.875); (2.125 : 17.6554996744792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbLoaiNguoiDung/tbLoaiNguoiDung_tbUser" />
+      <nodes>
+        <classShapeMoniker Id="b96e7fab-f5be-416c-9422-23c8cdf8d4e4" />
+        <classShapeMoniker Id="c3e9bb76-ac99-4794-9798-bf25790dbc18" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 10.5); (8.625 : 10.125); (8.625 : 7.47199625651042); (9 : 7.47199625651042)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbMonNgon/tbMonNgon_tbNguyenLieu" />
+      <nodes>
+        <classShapeMoniker Id="cbbfb6db-4719-4f6d-9841-3b698f7ba64d" />
+        <classShapeMoniker Id="4ed80af3-cac7-46b2-aeb3-f27a0c07d1c7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.15625 : 3.20359537760417); (11.15625 : 8.52809895833333); (12 : 8.52809895833333)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbNhaCungCap/tbNhaCungCap_tbLoHang" />
+      <nodes>
+        <classShapeMoniker Id="ee6175e7-e60f-4be2-a48e-a42c35f576f0" />
+        <classShapeMoniker Id="5b731caf-8480-45a7-8075-7319ee6d0eff" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.09375 : 17.6554996744792); (1.09375 : 21.4719962565104); (3.5 : 21.4719962565104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbUser/tbUser_tbNhanVien" />
+      <nodes>
+        <classShapeMoniker Id="c3e9bb76-ac99-4794-9798-bf25790dbc18" />
+        <classShapeMoniker Id="a3b3fba5-a955-41e3-9e18-d80e63248ba0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 7.41429768880208); (3.5 : 7.41429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbNhom/tbNhom_tbLoaiSanPham" />
+      <nodes>
+        <classShapeMoniker Id="53430633-b06b-484c-b53d-258a70f2e106" />
+        <classShapeMoniker Id="a5aaaa1a-fda5-4be7-a402-62d372e6d44e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.21769230769231 : 8.6651025390625); (8.56607443490112 : 9.01348466627131 : JumpStart); (8.74642556509888 : 9.19383579646907 : JumpEnd); (8.8125 : 9.25991023137019); (8.8125 : 13.8565991210937); (9 : 13.8565991210937)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbSanPham/tbSanPham_tbBinhLuan" />
+      <nodes>
+        <classShapeMoniker Id="6efcca25-bba6-436d-ac58-9a1157ff871d" />
+        <classShapeMoniker Id="0a248bfb-b879-4a37-8d30-a2daa560a190" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 8.56971692367789); (8.56607443490112 : 8.88579135857901 : JumpStart); (8.68392556509888 : 9.00364248877676 : JumpEnd); (8.6875 : 9.00721692367789); (8.6875 : 10.036472202474); (8.72916666666667 : 10.036472202474 : JumpStart); (8.89583333333333 : 10.036472202474 : JumpEnd); (9 : 10.036472202474)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbSanPham/tbSanPham_tbChiTietDonHang" />
+      <nodes>
+        <classShapeMoniker Id="6efcca25-bba6-436d-ac58-9a1157ff871d" />
+        <classShapeMoniker Id="2105e853-d0ac-48dc-9ae3-297f16fcad5d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 6.46875); (11.0729166666667 : 6.46875 : JumpStart); (11.2395833333333 : 6.46875 : JumpEnd); (12 : 6.46875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbSanPham/tbSanPham_tbLoHang" />
+      <nodes>
+        <classShapeMoniker Id="6efcca25-bba6-436d-ac58-9a1157ff871d" />
+        <classShapeMoniker Id="5b731caf-8480-45a7-8075-7319ee6d0eff" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 7.11099812825521); (9 : 7.11099812825521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbSanPham/tbSanPham_tbNguyenLieu" />
+      <nodes>
+        <classShapeMoniker Id="6efcca25-bba6-436d-ac58-9a1157ff871d" />
+        <classShapeMoniker Id="4ed80af3-cac7-46b2-aeb3-f27a0c07d1c7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4.94399251302083); (5.875 : 5.31899251302083); (5.875 : 7.39505126953125); (6.25 : 7.39505126953125)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbBanhKem/tbBanhKem_tbSanPham" />
+      <nodes>
+        <classShapeMoniker Id="69ac9ea1-9738-4782-b511-2b600587d37f" />
+        <classShapeMoniker Id="6efcca25-bba6-436d-ac58-9a1157ff871d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 9.8118490375601); (5.9375 : 9.3743490375601); (5.9375 : 8.06132890429688); (6.25 : 8.06132890429688)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbDonViTinh/tbDonViTinh_tbSanPham" />
+      <nodes>
+        <classShapeMoniker Id="ae090282-9924-493a-be5f-7f1138e54c86" />
+        <classShapeMoniker Id="6efcca25-bba6-436d-ac58-9a1157ff871d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 6.94752563476563); (5.79166666666667 : 6.94752563476562 : JumpStart); (5.95833333333333 : 6.94752563476563 : JumpEnd); (6.25 : 6.94752563476563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbLoaiSanPham/tbLoaiSanPham_tbSanPham" />
+      <nodes>
+        <classShapeMoniker Id="a5aaaa1a-fda5-4be7-a402-62d372e6d44e" />
+        <classShapeMoniker Id="6efcca25-bba6-436d-ac58-9a1157ff871d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 3.89829752604167); (9.09375 : 3.89829752604167); (9.09375 : 4.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbKhuyenMai/tbKhuyenMai_tbSanPhamKhuyenMai" />
+      <nodes>
+        <classShapeMoniker Id="76953b0a-1565-474f-96ec-c054bcaf5c90" />
+        <classShapeMoniker Id="6feb3495-93dd-4363-8982-3bb5c2603de9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.25 : 6.125); (7.25 : 5.47199625651042); (9 : 5.47199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbSanPham/tbSanPham_tbSanPhamKhuyenMai" />
+      <nodes>
+        <classShapeMoniker Id="6efcca25-bba6-436d-ac58-9a1157ff871d" />
+        <classShapeMoniker Id="6feb3495-93dd-4363-8982-3bb5c2603de9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 14.3806469726562); (6.25 : 14.3806469726562)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbTinhTrangHoaDon/tbTinhTrangHoaDon_tbDonHang" />
+      <nodes>
+        <classShapeMoniker Id="26f62d40-5be3-468b-98ee-df24e4fb23b2" />
+        <classShapeMoniker Id="22c52112-a88c-4426-8260-97a7100de413" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
