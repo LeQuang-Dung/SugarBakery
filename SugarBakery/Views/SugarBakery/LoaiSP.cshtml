@@ -1,0 +1,13 @@
+﻿@model IEnumerable<SugarBakery.Models.tbLoaiSanPham>
+
+<h2>LOẠI BÁNH</h2>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="@Url.Action("SPTheoLoai", "SugarBakery", new {id = item.MaLoaiSP})" class="list-group-item">
+                @item.TenLoaiSP
+            </a>
+        </li>
+    }
+</ul>
