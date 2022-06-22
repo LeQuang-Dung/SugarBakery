@@ -15,6 +15,18 @@
             <div class="thumbnail">
                 <a href="@Url.Action("ChiTiet", "SugarBakery", new {id = sanpham.MaSP})">
                     <img alt="@sanpham.TenSP" src="~/images/sanpham/@sanpham.AnhSP" width="170" height="170" />
+                    <div>
+                        <br />
+                        <h4 style="text-align:center">
+                            @sanpham.TenSP
+                        </h4>
+                    </div>
+                    <p><strong> Giá: </strong> @sanpham.GiaBan VNĐ</p>
+                    <div id="Datmua">
+                        <a href="@Url.Action("ThemGiohang", "GioHang", new {@iMaSP = sanpham.MaSP, @strURL=Request.Url.ToString() })">
+                            ĐẶT MUA
+                        </a>
+                    </div>
                     @*<div>
                         <br />
                         <h4 style="text-align:center">
@@ -58,6 +70,35 @@
 </ul>
 
 <style>
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;       
+    }
+
+    .thumbnail {
+        width: 250px;
+        float: left;
+    }
+
+    div#Datmua {
+        clear: both;
+        background-color: darkgreen;
+        width: 100px;
+        height: 35px;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        padding-top: 15px;
+        margin-bottom: 15px;
+        border-radius: 12px;
+    }
+
+    #Datmua a {
+        color: white;
+    }
+
     /*.MenuTrang li {
         display: inline-block;
         box-sizing: border-box;

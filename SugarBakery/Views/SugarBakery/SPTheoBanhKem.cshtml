@@ -1,15 +1,17 @@
-﻿@model IEnumerable<SugarBakery.Models.tbSanPham>
+﻿@using SugarBakery.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<tbSanPham>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "SPTheoBanhKem";
     Layout = "~/Views/Layout/_LayoutMenu.cshtml";
 }
 
-<h3 style="text-align:center; color:red">SẢN PHẢM MỚI</h3>
+<h3 style="text-align:center; color:red">SẢN PHẨM THEO KIỂU BÁNH</h3>
 <div class="row">
     @foreach (var sanpham in Model)
     {
-        <div class="col-sm-4 col-lg-4 cpl-md-4">
+        <div class="col-sm-3 col-lg-3 cpl-md-3">
             <div class="thumbnail">
                 <a href="@Url.Action("ChiTiet", "SugarBakery", new {id = sanpham.MaBK})">
                     <img alt="@sanpham.TenSP" src="~/images/sanpham/@sanpham.AnhSP" width="170" , height="170" />
@@ -20,19 +22,140 @@
                         </h4>
                         <p></p>
                     </div>
-                    <div class="ratings">
-                        <p class="pull-right">15 reviews</p>
-                        <p>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                        </p>
+                    <p><strong> Giá: </strong> @sanpham.GiaBan VNĐ</p>
+                    <div id="Datmua">
+                        <a href="@Url.Action("ThemGiohang", "GioHang", new {@iMaSP = sanpham.MaSP, @strURL=Request.Url.ToString() })">
+                            ĐẶT MUA
+                        </a>
                     </div>
+                    @*<div class="ratings">
+                            <p class="pull-right">15 reviews</p>
+                            <p>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                            </p>
+                        </div>*@
                 </a>
-
             </div>
         </div>
     }
 </div>
+
+@* tao lien ket cac trang*@
+<ul class="pagination modal-4">
+    <li>
+        <a href="" class="prev">
+            <i class="fa fa-chevron-left"></i>
+            Previous
+        </a>
+    </li>
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("SPTheoBanhKem", new { page = page }))
+    </div>
+    <li>
+        <a href="" class="next">
+            Next
+            <i class="fa fa-chevron-right"></i>
+        </a>
+    </li>
+</ul>
+<style>
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .thumbnail {
+        width: 250px;
+        float: left;
+    }
+
+    div#Datmua {
+        clear: both;
+        background-color: darkgreen;
+        width: 100px;
+        height: 35px;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        padding-top: 15px;
+        margin-bottom: 15px;
+        border-radius: 12px;
+    }
+
+    #Datmua a {
+        color: white;
+    }
+
+    .pagination {
+        list-style: none;
+        display: inline-block;
+        padding: 0;
+        margin-top: 10px;
+        text-align: center
+    }
+
+        .pagination li {
+            display: inline;
+            text-align: center;
+        }
+
+        .pagination a {
+            float: left;
+            display: block;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 5px 12px;
+            color: #fff;
+            margin-left: -1px;
+            border: 1px solid transparent;
+            line-height: 1.5;
+        }
+
+            .pagination a.active {
+                cursor: default;
+            }
+
+            .pagination a:active {
+                outline: none;
+            }
+
+    .modal-4 a {
+        margin: 0 5px;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        -moz-border-radius: 100%;
+        -webkit-border-radius: 100%;
+        border-radius: 100%;
+        background-color: #F7C12C;
+    }
+
+        .modal-4 a.prev {
+            -moz-border-radius: 50px 0 0 50px;
+            -webkit-border-radius: 50px;
+            border-radius: 50px 0 0 50px;
+            width: 100px;
+        }
+
+        .modal-4 a.next {
+            -moz-border-radius: 0 50px 50px 0;
+            -webkit-border-radius: 0;
+            border-radius: 0 50px 50px 0;
+            width: 100px;
+        }
+
+        .modal-4 a:hover {
+            background-color: #FFA500;
+        }
+
+        .modal-4 a.active, .modal-4 a:active {
+            background-color: #FFA100;
+        }
+</style>
