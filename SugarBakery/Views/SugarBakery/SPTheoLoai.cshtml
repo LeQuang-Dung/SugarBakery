@@ -46,21 +46,7 @@
 
 @* tao lien ket cac trang*@
 <ul class="pagination modal-4">
-    <li>
-        <a href="" class="prev">
-            <i class="fa fa-chevron-left"></i>
-            Previous
-        </a>
-    </li>
-    <div class="MenuTrang">
         @Html.PagedListPager(Model, page => Url.Action("SPTheoBanhKem", new { page = page }))
-    </div>
-    <li>
-        <a href="" class="next">
-            Next
-            <i class="fa fa-chevron-right"></i>
-        </a>
-    </li>
 </ul>
 <style>
     img {

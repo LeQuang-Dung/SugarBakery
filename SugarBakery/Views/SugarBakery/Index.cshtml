@@ -27,13 +27,7 @@
                             ĐẶT MUA
                         </a>
                     </div>
-                    @*<div>
-                        <br />
-                        <h4 style="text-align:center">
-                            @sanpham.TenSP
-                        </h4>
-                        <p></p>
-                    </div>
+                    @*
                     <div class="ratings">
                         <p class="pull-right">15 reviews</p>
                         <p>
@@ -52,21 +46,7 @@
 </div>
 @* tao lien ket cac trang*@
 <ul class="pagination modal-4">
-    <li>
-        <a href="" class="prev">
-            <i class="fa fa-chevron-left"></i>
-            Previous
-        </a>
-    </li>
-    <div class="MenuTrang">
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
-    </div>
-    <li>
-        <a href="" class="next">
-            Next
-            <i class="fa fa-chevron-right"></i>
-        </a>
-    </li>
 </ul>
 
 <style>
@@ -152,6 +132,7 @@
         -webkit-border-radius: 100%;
         border-radius: 100%;
         background-color: #F7C12C;
+        text-align:center;
     }
 
         .modal-4 a.prev {

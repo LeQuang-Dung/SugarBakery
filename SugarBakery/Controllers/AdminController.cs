@@ -16,9 +16,9 @@ namespace SugarBakery.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            if (Session["TKAdmin"] == null)
+            if (Session["TKadmin"] == null)
             {
-                return RedirectToAction("Index", "Fashion");
+                return RedirectToAction("Index", "SugarBakery");
             }
             return View();
         }
@@ -39,7 +39,7 @@ namespace SugarBakery.Controllers
                 ViewBag.ThongBaoAdmin = "Tài Khoản Hoặc Mật Khẩu Sai";
                 return this.Login();
             }
-            Session["TKAdmin"] = ad;
+            Session["TKadmin"] = ad;
             return RedirectToAction("Index", "Admin");
         }
     }
