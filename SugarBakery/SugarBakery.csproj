@@ -149,6 +149,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Sign Up\ContactUs.css" />
+    <Content Include="Content\Sign Up\font-awesome.css" />
+    <Content Include="Content\Sign Up\style.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\Style0.css" />
     <Content Include="favicon.ico" />
@@ -179,6 +182,9 @@
     <Content Include="images\About-UsDesktophtml_row0.jpg" />
     <Content Include="images\blank.jpg" />
     <Content Include="images\ContactDesktophtml_row0.jpg" />
+    <Content Include="images\contact\fb.png" />
+    <Content Include="images\contact\instagram.png" />
+    <Content Include="images\contact\twitter.png" />
     <Content Include="images\footerfacebook.png" />
     <Content Include="images\footergoogleplus.png" />
     <Content Include="images\footerlinkedin.png" />
@@ -196,6 +202,7 @@
     <Content Include="images\HomeDesktopSlide2.jpg" />
     <Content Include="images\Leftbutton.png" />
     <Content Include="images\logobakery.png" />
+    <Content Include="images\logofooter.png" />
     <Content Include="images\Our-MenuDesktophtml_column11.jpg" />
     <Content Include="images\Our-MenuDesktophtml_column21.jpg" />
     <Content Include="images\Our-MenuDesktophtml_column41.jpg" />
