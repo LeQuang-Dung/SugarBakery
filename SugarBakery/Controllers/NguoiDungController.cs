@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using SugarBakery.Models;
@@ -9,14 +11,25 @@ namespace SugarBakery.Controllers
 {
     public class NguoiDungController : Controller
     {
+
+        // create string MD5
+        public static string MD5Hash(string input)
+        {
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hash.Append(bytes[i].ToString("x2"));
+            }
+            return hash.ToString();
+        }
+
+
         dbSugarBakeryDataContext data = new dbSugarBakeryDataContext();
 
         // GET: NguoiDung
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult DangKy()
         {
@@ -28,14 +41,15 @@ namespace SugarBakery.Controllers
         [HttpPost]
         public ActionResult DangKy(FormCollection collection, tbKhachHang kh)
         {
-            var hoten = collection["HotenKH"];
+            var hoten = collection["Hoten"];
             var tendn = collection["TenDN"];
             var matkhau = collection["Matkhau"];
-            var matkhaunhaplai = collection["Matkhaunhaplai"];
+            var matkhaunhaplai = collection["Nhaplaimatkhau"];
             var diachi = collection["Diachi"];
             var email = collection["Email"];
             var dienthoai = collection["Dienthoai"];
             var ngaysinh = String.Format("{0:MM/dd/yyyy}", collection["Ngaysinh"]);
+
             if (String.IsNullOrEmpty(hoten))
             {
                 ViewData["Loi1"] = "Họ tên khách hàng không được để trống*";
@@ -54,22 +68,22 @@ namespace SugarBakery.Controllers
             }
             if (String.IsNullOrEmpty(email))
             {
-                ViewData["Loi5"] = "Email không được bỏ trống*";
+                ViewData["Loi6"] = "Email không được bỏ trống*";
             }
             if (String.IsNullOrEmpty(dienthoai))
             {
-                ViewData["Loi6"] = "Phải nhập số điện thoại*";
+                ViewData["Loi7"] = "Phải nhập số điện thoại*";
             }
             else
             {
                 //Gán giá trị cho đối tượng được tạo mới (KH)
-                //kh.TenKH = hoten;
-                //kh.TaiKhoan = tendn;
-                //kh.MatKhau = matkhau;
-                //kh.Email = email;
-                //kh.DiaChiKH = diachi;
-                //kh.DienThoaiKH = dienthoai;
-                //kh.NgaySinh = DateTime.Parse(ngaysinh);
+                kh.TenKH = hoten;
+                kh.TaiKhoan = tendn;
+                kh.MatKhau = MD5Hash(matkhau);
+                kh.Email = email;
+                kh.DiaChiKH = diachi;
+                kh.SDT = dienthoai;
+                kh.NgaySinh = DateTime.Parse(ngaysinh);
                 data.tbKhachHangs.InsertOnSubmit(kh);
                 data.SubmitChanges();
                 return RedirectToAction("Dangnhap");
@@ -83,35 +97,34 @@ namespace SugarBakery.Controllers
             return View();
         }
 
-        //public ActionResult Dangnhap(FormCollection collection)
-        //{
-        //    //Gan cac gia tri nguoi dung nhap lieu cho cac bien
-        //    var tendn = collection["TenDN"];
-        //    var matkhau = collection["Matkhau"];
-        //    if (string.IsNullOrEmpty(tendn))
-        //    {
-        //        ViewData["Loi1"] = "Phải nhập tên đang nhập*";
-        //    }
-        //    else if (string.IsNullOrEmpty(matkhau))
-        //    {
-        //        ViewData["Loi2"] = "Phải nhập mật khẩu*";
-        //    }
-        //    else
-        //    {
-        //        //Gán giá trị cho đối tượng được tạo mới (KH)
-        //        tbKhachHang kh = data.tbKhachHangs.SingleOrDefault(n => n.TaiKhoan == tendn && n.MatKhau == matkhau && n.MaLoaiNguoiDung == 2);
-        //        if (kh != null)
-        //        {
-        //            //ViewBag.Thongbao = "Chúc mừng đăng nhập thành công";
-        //            Session["Taikhoan"] = kh;
-        //            return RedirectToAction("Index", "NongSanZeno");
-        //        }
-        //        else
-        //        {
-        //            ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng";
-        //        }
-        //    }
-        //    return View();
-        //}
+        public ActionResult Dangnhap(FormCollection collection)
+        {
+            //Gan cac gia tri nguoi dung nhap lieu cho cac bien
+            var tendn = collection["TenDN"];
+            var matkhau = collection["Matkhau"];
+            if (string.IsNullOrEmpty(tendn))
+            {
+                ViewData["Loi1"] = "Phải nhập tên đang nhập*";
+            }
+            else if (string.IsNullOrEmpty(matkhau))
+                {
+                    ViewData["Loi2"] = "Phải nhập mật khẩu*";
+                }
+                else
+                {
+                    //Gán giá trị cho đối tượng được tạo mới (KH)
+                    tbKhachHang kh = data.tbKhachHangs.SingleOrDefault(n => n.TaiKhoan == tendn && n.MatKhau == MD5Hash(matkhau));
+                    if (kh != null)
+                    {
+                        Session["Taikhoan"] = kh;
+                        return RedirectToAction("Index", "SugarBakery");
+                    }
+                    else
+                    {
+                        ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng";
+                    }
+                }
+            return View();
+        }
     }
 }

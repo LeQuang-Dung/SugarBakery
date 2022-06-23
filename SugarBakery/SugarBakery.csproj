@@ -219,6 +219,7 @@
     <Content Include="images\About-UsDesktophtml_column10.jpg" />
     <Content Include="images\About-UsDesktophtml_column31.jpg" />
     <Content Include="images\About-UsDesktophtml_row0.jpg" />
+    <Content Include="Content\loginnguoidung\images\backgrounlogin.jpg" />
     <Content Include="images\blank.jpg" />
     <Content Include="images\ContactDesktophtml_row0.jpg" />
     <Content Include="images\contact\fb.png" />
