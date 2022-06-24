@@ -28,6 +28,11 @@ namespace SugarBakery.Controllers
             return View();
         }
 
+        public ActionResult KhuyenMai()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult LienHe()
         {
