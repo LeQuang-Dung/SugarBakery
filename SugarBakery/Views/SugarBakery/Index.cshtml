@@ -7,42 +7,44 @@
     Layout = "~/Views/Layout/_LayoutMenu.cshtml";
 }
 
-<div class="row">
+@*<div class="row">*@
     @foreach (var sanpham in Model)
     {
-        <div class="col-sm-3 col-lg-3 col-md-3" style="width:320px; height:420px" >
+        @*<div class="col-sm-3 col-lg-3 col-md-3" style="width:320px; height:420px" >*@
+        <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
                 <a href="@Url.Action("ChiTiet", "SugarBakery", new {id = sanpham.MaSP})">
-                    <img alt="@sanpham.TenSP" src="~/images/sanpham/@sanpham.AnhSP" />
+                    <img alt="@sanpham.TenSP" src="~/images/sanpham/@sanpham.AnhSP" style="width:170px; height:200px"/>
                     <div>
                         <br />
-                        <h6 style="text-align:center">
+                        <h6 style="text-align:center; height:30px">
                             @sanpham.TenSP
                         </h6>
+                        <br />
                     </div>
-                    <p><strong> Giá: </strong> @sanpham.GiaBan VNĐ</p>
+                </a>
+                <div class="caption" style="margin-bottom:10px">
+                    <p><strong> Giá: </strong> @String.Format("{0:0,0}", sanpham.GiaBan) VNĐ</p>
                     <div id="Datmua">
                         <a href="@Url.Action("ThemGiohang", "GioHang", new {@iMaSP = sanpham.MaSP, @strURL=Request.Url.ToString() })">
                             ĐẶT MUA
                         </a>
                     </div>
-                    @*
-                    <div class="ratings">
-                        <p class="pull-right">15 reviews</p>
-                        <p>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                        </p>
-                    </div>*@
-                </a>
-
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">15 reviews</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </p>
+                </div>
             </div>
         </div>
     }
-</div>
+@*</div>*@
 @* tao lien ket cac trang*@
 <ul class="pagination modal-4">
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
@@ -58,10 +60,105 @@
     }
 
     .thumbnail {
-        width: 250px;
-        /*float: left;*/
-        flex: auto;
+        /*width: 250px;
+        float: left;
+        padding: 0;*/
+        margin: 10px auto;
+        position: relative;
+        width: 320px;
+        height: 420px;
+        background: #e6e6e6;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 10px 5px #ebebeb;
     }
+        .thumbnail:hover::before {
+            top: -75%;
+            transform: skewY(390deg);
+        }
+
+        .thumbnail::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            font-weight: 600;
+            font-size: 8em;
+            color: rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail img {
+            position: relative;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+            z-index: 1;
+            max-height: 100%;
+            max-width: 100%;
+            transition: 0.5s;
+        }
+
+        .thumbnail:hover img {
+            max-width: 50%;
+            max-height: 50%;
+        }
+
+        .thumbnail .caption {
+            position: relative;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+            .thumbnail .caption h3 {
+                font-size: 10px;
+                color: aliceblue;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .thumbnail .caption .pull-right {
+                font-size: 24px;
+                color: aliceblue;
+                font-weight: 500;
+                text-transform: none;
+                letter-spacing: 1px;
+            }
+
+        .thumbnail .buy {
+            position: relative;
+            top: 200px;
+            opacity: 0;
+            margin: 0 auto;
+            padding: 8px 30px;
+            margin-top: 0px;
+            color: aliceblue;
+            text-decoration: none;
+            background: #938f63;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.5s;
+            font-weight: bold;
+        }
+
+            .thumbnail .buy:hover {
+                background-color: #fcf5c7;
+                color: black;
+                font-weight: bold;
+            }
+
+        .thumbnail:hover .buy {
+            top: 0;
+            position: relative;
+            opacity: 10;
+        }
 
     div#Datmua {
         clear: both;

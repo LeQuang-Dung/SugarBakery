@@ -66,7 +66,7 @@ namespace SugarBakery.Controllers
             }
             int pagesize = 6;
             int pageNum = (page ?? 1);
-            var SPbk = from sp in data.tbBanhKems where sp.MaBK == id select sp;
+            var SPbk = from sp in data.tbSanPhams where sp.MaBK == id select sp;
             return View(SPbk.ToPagedList(pageNum, pagesize));
         }
 
