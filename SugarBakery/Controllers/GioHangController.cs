@@ -12,7 +12,7 @@ namespace SugarBakery.Controllers
         //Tao doi tuong data chua du lieu tu model dbnongsan da tao
         dbSugarBakeryDataContext data = new dbSugarBakeryDataContext();
         // GET: GioHang
-        //public List<Giohang> Laygiohang()
+        //public List<GioHang> Laygiohang()
         //{
         //    List<Giohang> lstGiohang = Session["Giohang"] as List<Giohang>;
         //    if (lstGiohang == null)
