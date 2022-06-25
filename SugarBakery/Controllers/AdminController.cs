@@ -23,12 +23,12 @@ namespace SugarBakery.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult DangNhapAD()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Login(FormCollection collection)
+        public ActionResult DangNhapAD(FormCollection collection)
         {
             string user = collection["form-username"];
             string pass = collection["form-password"];
@@ -37,10 +37,15 @@ namespace SugarBakery.Controllers
             if (ad == null)
             {
                 ViewBag.ThongBaoAdmin = "Tài Khoản Hoặc Mật Khẩu Sai";
-                return this.Login();
+                return this.DangNhapAD();
             }
             Session["TKadmin"] = ad;
             return RedirectToAction("Index", "Admin");
+        }
+
+        public ActionResult QuenMatKhauAD()
+        {
+            return View();
         }
     }
 }

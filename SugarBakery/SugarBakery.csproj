@@ -128,6 +128,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminHoaDonController.cs" />
+    <Compile Include="Controllers\AdminSanPhamController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
@@ -2396,14 +2398,17 @@
     <Content Include="Views\SugarBakery\LoaiSP.cshtml" />
     <Content Include="Views\SugarBakery\SPTheoLoai.cshtml" />
     <Content Include="Views\Layout\_LayoutMenu.cshtml" />
-    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Admin\DangNhapAD.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\KhuyenMai.cshtml" />
+    <Content Include="Views\Admin\QuenMatKhauAD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\khuyenmai\" />
     <Folder Include="images\quangcao\" />
+    <Folder Include="Views\AdminHoaDon\" />
+    <Folder Include="Views\AdminSanPham\" />
     <Folder Include="Views\GioHang\" />
   </ItemGroup>
   <ItemGroup>
