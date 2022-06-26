@@ -159,6 +159,7 @@ namespace SugarBakery.Controllers
         public ActionResult DatHang(FormCollection collection)
         {
             //Them don hang
+            tbTinhTrangHoaDon tthd = new tbTinhTrangHoaDon();
             tbDonHang ddh = new tbDonHang();
             tbKhachHang kh = (tbKhachHang)Session["Taikhoan"];
             List<Giohang> gh = Laygiohang();
@@ -166,7 +167,7 @@ namespace SugarBakery.Controllers
             ddh.NgayDat = DateTime.Now;
             var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["Ngaygiao"]);
             ddh.NgayGiao = DateTime.Parse(ngaygiao);
-            //ddh.Tinhtranggiaohang = false;
+            ddh.MaTTHD = 1;
             //ddh.Dathanhtoan = false;
             data.tbDonHangs.InsertOnSubmit(ddh);
             data.SubmitChanges();

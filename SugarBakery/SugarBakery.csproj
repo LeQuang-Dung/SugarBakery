@@ -2416,12 +2416,12 @@
     <Content Include="Views\AdminSanPham\Xoasanpham.cshtml" />
     <Content Include="Views\AdminSanPham\Suasanpham.cshtml" />
     <Content Include="Views\AdminSanPham\Chitietsanpham.cshtml" />
+    <Content Include="Views\AdminHoaDon\DSdonhang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\khuyenmai\" />
     <Folder Include="images\quangcao\" />
-    <Folder Include="Views\AdminHoaDon\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
