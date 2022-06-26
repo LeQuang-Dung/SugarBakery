@@ -142,7 +142,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbSugarBakery.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\Giohang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2385,8 +2385,8 @@
     <Content Include="Views\Layout\_LayoutAdmin.cshtml" />
     <Content Include="Views\Layout\_LayoutContact.cshtml" />
     <Content Include="Views\Layout\_LayoutLogin.cshtml" />
-    <Content Include="Views\SugarBakery\Index.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\SugarBakery\SanPham.cshtml" />
+    <Content Include="Views\Home\TrangChu.cshtml" />
     <Content Include="Views\Home\GioiThieu.cshtml" />
     <Content Include="Views\Home\TinTuc.cshtml" />
     <Content Include="Views\Home\LienHe.cshtml" />
@@ -2402,6 +2402,10 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\KhuyenMai.cshtml" />
     <Content Include="Views\Admin\QuenMatKhauAD.cshtml" />
+    <Content Include="Views\GioHang\GioHang.cshtml" />
+    <Content Include="Views\GioHang\GiohangPartial.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\GioHang\Xacnhandonhang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2409,7 +2413,6 @@
     <Folder Include="images\quangcao\" />
     <Folder Include="Views\AdminHoaDon\" />
     <Folder Include="Views\AdminSanPham\" />
-    <Folder Include="Views\GioHang\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

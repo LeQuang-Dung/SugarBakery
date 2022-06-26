@@ -13,7 +13,7 @@ namespace SugarBakery.Controllers
     {
         dbSugarBakeryDataContext data = new dbSugarBakeryDataContext();
 
-        public ActionResult Index()
+        public ActionResult TrangChu()
         {
             return View();
         }

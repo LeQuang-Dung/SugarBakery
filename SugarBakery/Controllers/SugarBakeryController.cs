@@ -18,7 +18,7 @@ namespace SugarBakery.Controllers
         {
             return data.tbSanPhams.OrderByDescending(a => a.MaSP).Take(count).ToList();
         }
-        public ActionResult Index(int? page)
+        public ActionResult SanPham(int? page)
         {
             //Tao bien quy dinh so san pham tren moi trang
             int pageSize = 6;

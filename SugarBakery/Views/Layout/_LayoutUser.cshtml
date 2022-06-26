@@ -67,7 +67,7 @@
                     <div class="menu-center collapse navbar-collapse">
                         <ul class="ttr_menu_items nav navbar-nav navbar-right">
                             <li class="ttr_menu_items_parent dropdown">
-                                <a href="@Url.Action("Index","Home")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>TRANG CHỦ</a>
+                                <a href="@Url.Action("TrangChu","Home")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>TRANG CHỦ</a>
                                 <hr class="horiz_separator" />
                             </li>
                             <li class="ttr_menu_items_parent dropdown">
@@ -75,7 +75,7 @@
                                 <hr class="horiz_separator" />
                             </li>
                             <li class="ttr_menu_items_parent dropdown">
-                                <a href="@Url.Action("Index","SugarBakery")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>SẢN PHẨM</a>
+                                <a href="@Url.Action("SanPham","SugarBakery")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>SẢN PHẨM</a>
                                 <hr class="horiz_separator" />
                             </li>
                             <li class="ttr_menu_items_parent dropdown">
@@ -90,13 +90,50 @@
                                 <a href="@Url.Action("LienHe","Home")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>LIÊN HỆ</a>
                                 <hr class="horiz_separator" />
                             </li>
-                            <li class="ttr_menu_items_parent dropdown">
-                                <a href="@Url.Action("Index","SugarBakery")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>GIỎ HÀNG</a>
+
+                            @*<ul>
+                                <li class="Login">
+                                    @Html.Action("GiohangPartial", "GioHang")
+                                </li>
+
+                                @if (Session["User"] == null)
+                                {
+                                    <li class="Login" style="color:black"><a href="@Url.Action("DangKy","NguoiDung")">Đăng Ký</a></li>
+                                    <li class="Login"><a href="@Url.Action("Dangnhap","NguoiDung")">Đăng Nhập</a></li>
+                                }
+                                else
+                                {
+                                    <li class="Login"><a href="@Url.Action("Dangnhap","NguoiDung")">Đăng Xuất</a></li>
+                                    <li class="Login"><a href="#">Xin Chào @Session["User"]</a></li>
+                                }
+                            </ul>*@
+                            @if (Session["User"] == null)
+                            {
+                                <li>
+                                    <a href="@Url.Action("DangKy","NguoiDung")">Đăng Ký</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Dangnhap","NguoiDung")">Đăng Nhập</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="Login"><a href="@Url.Action("Dangnhap","NguoiDung")">Đăng Xuất</a></li>
+                                <li class="Login"><a href="#">Xin Chào @Session["User"]</a></li>
+                            }
+                            <li>
+                                @Html.Action("GiohangPartial", "Giohang")
+                            </li>
+                            @*<li class="ttr_menu_items_parent dropdown">
+                                <a href="@Html.Action("GiohangPartial", "GioHang")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>GIỎ HÀNG</a>
                                 <hr class="horiz_separator" />
                             </li>
+
+
+
                             <a href="@Url.Action("Dangnhap","NguoiDung")"><span class="menuchildicon"></span>ĐĂNG NHẬP</a>
                             <a>---</a>
-                            <a href="@Url.Action("DangKy","NguoiDung")"><span class="menuchildicon"></span>ĐĂNG KÝ</a>
+                            <a href="@Url.Action("DangKy","NguoiDung")"><span class="menuchildicon"></span>ĐĂNG KÝ</a>*@
                         </ul>
                     </div>
                 </div>

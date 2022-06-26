@@ -116,8 +116,9 @@ namespace SugarBakery.Controllers
                     tbKhachHang kh = data.tbKhachHangs.SingleOrDefault(n => n.TaiKhoan == tendn && n.MatKhau == MD5Hash(matkhau));
                     if (kh != null)
                     {
+                        Session["User"] = kh.TenKH;
                         Session["Taikhoan"] = kh;
-                        return RedirectToAction("Index", "SugarBakery");
+                        return RedirectToAction("SanPham", "SugarBakery");
                     }
                     else
                     {
@@ -125,6 +126,13 @@ namespace SugarBakery.Controllers
                     }
                 }
             return View();
+        }
+
+        public ActionResult Dangxuat()
+        {
+            Session["User"] = null;
+            Session["Taikhoan"] = null;
+            return RedirectToAction("SanPham", "SugarBakery");
         }
     }
 }

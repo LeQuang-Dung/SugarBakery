@@ -41,24 +41,6 @@
         .container {
             padding-top: 10px;
         }
-        /*Design button Top*/
-        #bttop {
-            width: 40px;
-            height: 40px;
-            position: fixed;
-            bottom: 10px;
-            right: 30px;
-            border: none;
-            background-color: #ffffcf;
-            color: black;
-            border-radius: 4px;
-            cursor: pointer;
-            display: none;
-        }
-
-            #bttop:hover {
-                background-color: #5f5f5e;
-            }
         /*Design button Login*/
         .Login {
             float: right;
@@ -91,38 +73,6 @@
                 background-color: #716d3a;
                 color: white;
             }
-
-        .footer {
-            width: 100%;
-            margin-top: 50px;
-            background-color: #201c29;
-            position: absolute;
-        }
-
-            .footer .top-foot {
-                float: left;
-                color: #fff;
-            }
-
-
-
-
-                .footer .top-foot .category {
-                    width: 100%;
-                    float: left;
-                    margin-right: 10px;
-                }
-
-
-        @@media(max-width:1024px) {
-            .footer .top-foot h2 {
-                font-size: 20px;
-            }
-        }
-
-        .colorr {
-            background-color: rgba(214, 188, 137, 0.277);
-        }
     </style>
 </head>
 <body>
@@ -153,7 +103,7 @@
                     <div class="menu-center collapse navbar-collapse">
                         <ul class="ttr_menu_items nav navbar-nav navbar-right">
                             <li class="ttr_menu_items_parent dropdown">
-                                <a href="@Url.Action("Index","Home")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>TRANG CHỦ</a>
+                                <a href="@Url.Action("TrangChu","Home")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>TRANG CHỦ</a>
                                 <hr class="horiz_separator" />
                             </li>
                             <li class="ttr_menu_items_parent dropdown">
@@ -161,7 +111,7 @@
                                 <hr class="horiz_separator" />
                             </li>
                             <li class="ttr_menu_items_parent dropdown">
-                                <a href="@Url.Action("Index","SugarBakery")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>SẢN PHẨM</a>
+                                <a href="@Url.Action("SanPham","SugarBakery")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>SẢN PHẨM</a>
                                 <hr class="horiz_separator" />
                             </li>
                             <li class="ttr_menu_items_parent dropdown">
@@ -169,20 +119,40 @@
                                 <hr class="horiz_separator" />
                             </li>
                             <li class="ttr_menu_items_parent dropdown">
-                                <a href="@Url.Action("Index","SugarBakery")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>KHUYẾN MÃI</a>
+                                <a href="@Url.Action("KhuyenMai","Home")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>KHUYẾN MÃI</a>
                                 <hr class="horiz_separator" />
                             </li>
                             <li class="ttr_menu_items_parent dropdown">
                                 <a href="@Url.Action("LienHe","Home")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>LIÊN HỆ</a>
                                 <hr class="horiz_separator" />
                             </li>
-                            <li class="ttr_menu_items_parent dropdown">
-                                <a href="@Url.Action("Index","SugarBakery")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>GIỎ HÀNG</a>
+                            @if (Session["User"] == null)
+                            {
+                                <li>
+                                    <a href="@Url.Action("DangKy","NguoiDung")">Đăng Ký</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Dangnhap","NguoiDung")">Đăng Nhập</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="Login"><a href="@Url.Action("Dangnhap","NguoiDung")">Đăng Xuất</a></li>
+                                <li class="Login"><a href="#">Xin Chào @Session["User"]</a></li>
+                            }
+                            <li>
+                                @Html.Action("GiohangPartial", "Giohang")
+                            </li>
+                            @*<li class="ttr_menu_items_parent dropdown">
+                                <a href="@Html.Action("GiohangPartial", "GioHang")" class="ttr_menu_items_parent_link"><span class="menuchildicon"></span>GIỎ HÀNG</a>
                                 <hr class="horiz_separator" />
                             </li>
+
+
+
                             <a href="@Url.Action("Dangnhap","NguoiDung")"><span class="menuchildicon"></span>ĐĂNG NHẬP</a>
                             <a>---</a>
-                            <a href="@Url.Action("DangKy","NguoiDung")"><span class="menuchildicon"></span>ĐĂNG KÝ</a>
+                            <a href="@Url.Action("DangKy","NguoiDung")"><span class="menuchildicon"></span>ĐĂNG KÝ</a>*@
                         </ul>
                     </div>
                 </div>
@@ -218,15 +188,15 @@
         <div class="container">
             <!-- New Product -->
             <div class="row">
-                @RenderSection("Table", false)
+                @*@RenderSection("Table", false)*@
                 <div class="col-md-9" style="margin-top:2%">
                     <div>
                         @RenderBody()
                     </div>
                 </div>
-                @RenderSection("MenuTrang", false)
+                @*@RenderSection("MenuTrang", false)*@
             </div>
-            @RenderSection("Footer", false)
+            @*@RenderSection("Footer", false)*@
         </div>
         @*<div>
             @RenderBody()
