@@ -21,12 +21,12 @@ namespace SugarBakery.Controllers
         public ActionResult SanPham(int? page)
         {
             //Tao bien quy dinh so san pham tren moi trang
-            int pageSize = 6;
+            int pageSize = 8;
             //tao bien so trang
             int pageNum = (page ?? 1);
 
             //Lay top 6 san pham ban chay nhat
-            var sanphammoi = Laysanpham(15);
+            var sanphammoi = Laysanpham(30);
             return View(sanphammoi.ToPagedList(pageNum, pageSize));
         }
 
@@ -46,7 +46,7 @@ namespace SugarBakery.Controllers
         {
             var allSP = from sp in data.tbSanPhams select sp;
 
-            int pagesize = 6;
+            int pagesize = 8;
             int pageNum = (page ?? 1);
             return View(allSP.ToPagedList(pageNum, pagesize));
         }
@@ -64,7 +64,7 @@ namespace SugarBakery.Controllers
             {
                 return HttpNotFound();
             }
-            int pagesize = 6;
+            int pagesize = 8;
             int pageNum = (page ?? 1);
             var SPbk = from sp in data.tbSanPhams where sp.MaBK == id select sp;
             return View(SPbk.ToPagedList(pageNum, pagesize));

@@ -21,17 +21,7 @@ namespace SugarBakery.Controllers
         //------------------------------ Phản  Hồi Khách Hàng ------------------------------------
         public ActionResult DSPhanHoi(int? page)
         {
-            if (Session["TKadmin"] == null)
-            {
-                return RedirectToAction("Index", "SugarBakery");
-            }
-            else
-            {
-                int pagesize = 10;
-                int pageNum = (page ?? 1);
-                var list = data.tbPhanHoiKHs.OrderByDescending(s => s.MaKH).ToList();
-                return View(list.ToPagedList(pageNum, pagesize));
-            }
+            return View();
         }
 
         public ActionResult ChiTietPhanHoi(int id)

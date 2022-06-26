@@ -24,9 +24,9 @@ namespace SugarBakery.Controllers
         {
             if (Session["TKadmin"] == null)
             {
-                return RedirectToAction("Index", "SugarBakery");
+                return RedirectToAction("SanPham", "SugarBakery");
             }
-            int pagesize = 10;
+            int pagesize = 8;
             int pageNum = (page ?? 1);
             var list = data.tbSanPhams.OrderByDescending(s => s.MaSP).ToList();
             return View(list.ToPagedList(pageNum, pagesize));
@@ -58,7 +58,7 @@ namespace SugarBakery.Controllers
         {
             if (Session["TKadmin"] == null)
             {
-                return RedirectToAction("Index", "SugarBakery");
+                return RedirectToAction("SanPham", "SugarBakery");
             }
             ViewBag.Loai = new SelectList(data.tbLoaiSanPhams.ToList().OrderBy(n => n.MaLoaiSP), "MaLoaiSP", "TenLoaiSP");
             ViewBag.MaBK = new SelectList(data.tbBanhKems.ToList().OrderBy(n => n.TenBK), "MaBK", "TenBK");
@@ -71,7 +71,7 @@ namespace SugarBakery.Controllers
         {
             if (Session["TKadmin"] == null)
             {
-                return RedirectToAction("Index", "SugarBakery");
+                return RedirectToAction("SanPham", "SugarBakery");
             }
             ViewBag.Loai = new SelectList(data.tbLoaiSanPhams.ToList().OrderBy(n => n.MaLoaiSP), "MaLoaiSP", "TenLoaiSP");
             ViewBag.MaBK = new SelectList(data.tbBanhKems.ToList().OrderBy(n => n.TenBK), "MaBK", "TenBK");
@@ -82,7 +82,7 @@ namespace SugarBakery.Controllers
             var Date = collection["Date"];
             var loai = collection["Loai"];
             var Banh = collection["MaBK"];
-            var Dvt = collection["Dvt"];
+            var dvt = collection["Dvt"];
 
             var filename = Path.GetFileName(fileUpload.FileName);
             var path = Path.Combine(Server.MapPath("~/images/sanpham"), filename);
@@ -102,7 +102,7 @@ namespace SugarBakery.Controllers
             sp.NgayCapNhat = DateTime.Parse(Date);
             sp.MaLoaiSP = Int32.Parse(loai);
             sp.MaBK = Int32.Parse(Banh);
-            sp.MaDVT = Int32.Parse(Dvt);
+            //sp.MaDVT = Int32.Parse(dvt);
             sp.AnhSP = filename;
             data.tbSanPhams.InsertOnSubmit(sp);
             data.SubmitChanges();
@@ -114,7 +114,7 @@ namespace SugarBakery.Controllers
         {
             if (Session["TKadmin"] == null)
             {
-                return RedirectToAction("Index", "SugarBakery");
+                return RedirectToAction("SanPham", "SugarBakery");
             }
             else
             {
@@ -133,7 +133,7 @@ namespace SugarBakery.Controllers
         {
             if (Session["TKadmin"] == null)
             {
-                return RedirectToAction("Index", "SugarBakery");
+                return RedirectToAction("SanPham", "SugarBakery");
             }
             else
             {
@@ -156,7 +156,7 @@ namespace SugarBakery.Controllers
         {
             if (Session["TKadmin"] == null)
             {
-                return RedirectToAction("Index", "SugarBakery");
+                return RedirectToAction("SanPham", "SugarBakery");
             }
             tbSanPham sp = data.tbSanPhams.SingleOrDefault(n => n.MaSP == id);
             ViewBag.Loai = new SelectList(data.tbLoaiSanPhams.ToList().OrderBy(n => n.MaLoaiSP), "MaLoaiSP", "TenLoaiSP", sp.MaLoaiSP);
@@ -177,7 +177,7 @@ namespace SugarBakery.Controllers
             var img = "";
             if (Session["TKadmin"] == null)
             {
-                return RedirectToAction("Index", "SugarBakery");
+                return RedirectToAction("SanPham", "SugarBakery");
             }
             if (fileUpload != null)
             {
@@ -206,11 +206,11 @@ namespace SugarBakery.Controllers
         }
 
 
-        public ActionResult Chitiet(int id)
+        public ActionResult Chitietsanpham(int id)
         {
             if (Session["TKadmin"] == null)
             {
-                return RedirectToAction("Index", "SugarBakery");
+                return RedirectToAction("SanPham", "SugarBakery");
             }
 
 

@@ -48,6 +48,7 @@
 }
 @*</div>*@
 @* tao lien ket cac trang*@
+<div style="clear: both;">&nbsp;</div>
 <div class="pagination modal-4">
     @Html.PagedListPager(Model, page => Url.Action("SanPham", new { page = page }))
 </div>

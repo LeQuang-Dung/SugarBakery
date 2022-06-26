@@ -10,7 +10,7 @@
 <h3 style="text-align:center; color:red">SẢN PHẨM BÁNH THEO LOẠI</h3>
 @foreach (var sanpham in Model)
 {
-    <div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="col-sm-3 col-lg-3 col-md-3">
         <div class="thumbnail">
 
             <a href="@Url.Action("ChiTiet", "SugarBakery", new {id = sanpham.MaLoaiSP})">
@@ -46,8 +46,9 @@
 }
 
 @* tao lien ket cac trang*@
+<div style="clear: both;">&nbsp;</div>
 <ul class="pagination modal-4">
-        @Html.PagedListPager(Model, page => Url.Action("SPTheoLoai", new { page = page }))
+    @Html.PagedListPager(Model, page => Url.Action("SPTheoLoai", new { page = page }))
 </ul>
 
 <style>

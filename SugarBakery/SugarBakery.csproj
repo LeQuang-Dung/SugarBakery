@@ -1916,6 +1916,7 @@
     <Content Include="images\footerlinkedin.png" />
     <Content Include="images\footertwitter.png" />
     <Content Include="images\GalleryDesktophtml_row0.jpg" />
+    <Content Include="images\Giohang.png" />
     <Content Include="images\gototop0.png" />
     <Content Include="images\headerfacebook.png" />
     <Content Include="images\headergoogleplus.png" />
@@ -2406,13 +2407,21 @@
     <Content Include="Views\GioHang\GiohangPartial.cshtml" />
     <Content Include="Views\GioHang\DatHang.cshtml" />
     <Content Include="Views\GioHang\Xacnhandonhang.cshtml" />
+    <Content Include="Views\AdminSanPham\DSsanpham.cshtml" />
+    <Content Include="Views\AdminSanPham\Loaisp.cshtml" />
+    <Content Include="Views\AdminSanPham\Banhkem.cshtml" />
+    <Content Include="Views\AdminSanPham\Nhacungcap.cshtml" />
+    <Content Include="Views\AdminSanPham\Donvitinh.cshtml" />
+    <Content Include="Views\AdminSanPham\Themsanpham.cshtml" />
+    <Content Include="Views\AdminSanPham\Xoasanpham.cshtml" />
+    <Content Include="Views\AdminSanPham\Suasanpham.cshtml" />
+    <Content Include="Views\AdminSanPham\Chitietsanpham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\khuyenmai\" />
     <Folder Include="images\quangcao\" />
     <Folder Include="Views\AdminHoaDon\" />
-    <Folder Include="Views\AdminSanPham\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
