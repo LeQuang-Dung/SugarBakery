@@ -2417,6 +2417,10 @@
     <Content Include="Views\AdminSanPham\Suasanpham.cshtml" />
     <Content Include="Views\AdminSanPham\Chitietsanpham.cshtml" />
     <Content Include="Views\AdminHoaDon\DSdonhang.cshtml" />
+    <Content Include="Views\AdminHoaDon\ChiTietdonhang.cshtml" />
+    <Content Include="Views\AdminHoaDon\Suadonhang.cshtml" />
+    <Content Include="Views\AdminHoaDon\XoaChiTietDonDatHang.cshtml" />
+    <Content Include="Views\AdminHoaDon\Xoadonhang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

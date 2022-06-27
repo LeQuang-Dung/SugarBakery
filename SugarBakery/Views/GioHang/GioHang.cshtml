@@ -28,7 +28,7 @@
                 <td>
                     <img src="~/images/sanpham/@item.sAnhbia" width="100" />
                 </td>
-                @using (Html.BeginForm("CapnhatGiohang", "GioHang", new { @iMaSP = item.iMasp }))
+                @using (Html.BeginForm("CapnhatGiohang", "Giohang", new { @iMaSP = item.iMasp }))
                 {
                     <td>
                         <input type="number" min="1" name="txtSoluong" value="@item.iSoluong" style="width:35px; background-color:lightgrey" />
