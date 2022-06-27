@@ -26,7 +26,7 @@
             <div class="caption" style="margin-bottom:10px">
                 <p><strong> Giá: </strong> @String.Format("{0:0,0}", sanpham.GiaBan) VNĐ</p>
                 <div id="Datmua">
-                    <a href="@Url.Action("ThemGiohang", "GioHang", new {@iMaSP = sanpham.MaSP, @strURL=Request.Url.ToString() })">
+                    <a href="@Url.Action("ThemGiohang", "GioHang", new {@masp = sanpham.MaSP, @strURL=Request.Url.ToString() })">
                         ĐẶT MUA
                     </a>
                     @*<a href="@Url.Action("ThemGioHang","GioHang",new {masp = sanpham.MaSP, strUrl = Request.Url.ToString() })" class="buy">Thêm Vào Giỏ</a>*@

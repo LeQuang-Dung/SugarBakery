@@ -142,7 +142,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbSugarBakery.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Giohang.cs" />
+    <Compile Include="Models\GioHang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1907,6 +1907,7 @@
     <Content Include="images\About-UsDesktophtml_row0.jpg" />
     <Content Include="Content\loginnguoidung\images\backgrounlogin.jpg" />
     <Content Include="images\blank.jpg" />
+    <Content Include="images\cart.jpg" />
     <Content Include="images\ContactDesktophtml_row0.jpg" />
     <Content Include="images\contact\fb.png" />
     <Content Include="images\contact\instagram.png" />
@@ -2403,10 +2404,6 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\KhuyenMai.cshtml" />
     <Content Include="Views\Admin\QuenMatKhauAD.cshtml" />
-    <Content Include="Views\GioHang\GioHang.cshtml" />
-    <Content Include="Views\GioHang\GiohangPartial.cshtml" />
-    <Content Include="Views\GioHang\DatHang.cshtml" />
-    <Content Include="Views\GioHang\Xacnhandonhang.cshtml" />
     <Content Include="Views\AdminSanPham\DSsanpham.cshtml" />
     <Content Include="Views\AdminSanPham\Loaisp.cshtml" />
     <Content Include="Views\AdminSanPham\Banhkem.cshtml" />
@@ -2421,6 +2418,10 @@
     <Content Include="Views\AdminHoaDon\Suadonhang.cshtml" />
     <Content Include="Views\AdminHoaDon\XoaChiTietDonDatHang.cshtml" />
     <Content Include="Views\AdminHoaDon\Xoadonhang.cshtml" />
+    <Content Include="Views\GioHang\Giohang.cshtml" />
+    <Content Include="Views\GioHang\GiohangPartial.cshtml" />
+    <Content Include="Views\GioHang\Xacnhandonhang.cshtml" />
+    <Content Include="Views\GioHang\Dathang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
