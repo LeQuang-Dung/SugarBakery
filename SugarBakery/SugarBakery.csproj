@@ -154,6 +154,7 @@
     <Content Include="Content\Admin\css\sb-admin-2.css" />
     <Content Include="Content\Admin\css\sb-admin-2.min.css" />
     <Content Include="Content\Admin\css\styles.css" />
+    <Content Include="Content\Admin\img\bg-ad.jpg" />
     <Content Include="Content\Admin\img\undraw_posting_photo.svg" />
     <Content Include="Content\Admin\img\undraw_profile.svg" />
     <Content Include="Content\Admin\img\undraw_profile_1.svg" />
@@ -2422,6 +2423,21 @@
     <Content Include="Views\GioHang\GiohangPartial.cshtml" />
     <Content Include="Views\GioHang\Xacnhandonhang.cshtml" />
     <Content Include="Views\GioHang\Dathang.cshtml" />
+    <Content Include="Views\AdminHoaDon\DSPhanHoi.cshtml" />
+    <Content Include="Views\AdminHoaDon\ChiTietPhanHoi.cshtml" />
+    <Content Include="Views\AdminHoaDon\XoaPhanHoi.cshtml" />
+    <Content Include="Views\AdminHoaDon\DSkh.cshtml" />
+    <Content Include="Views\AdminHoaDon\Xoakh.cshtml" />
+    <Content Include="Views\AdminHoaDon\ChiTietKH.cshtml" />
+    <Content Include="Views\AdminSanPham\DSbanhkem.cshtml" />
+    <Content Include="Views\NguoiDung\Thongtintk.cshtml" />
+    <Content Include="Views\AdminSanPham\Thembanhkem.cshtml" />
+    <Content Include="Views\AdminSanPham\Suabanhkem.cshtml" />
+    <Content Include="Views\AdminSanPham\Xoabanhkem.cshtml" />
+    <Content Include="Views\AdminSanPham\DSdvt.cshtml" />
+    <Content Include="Views\AdminSanPham\ThemDvt.cshtml" />
+    <Content Include="Views\AdminSanPham\Suadvt.cshtml" />
+    <Content Include="Views\AdminSanPham\Xoadvt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

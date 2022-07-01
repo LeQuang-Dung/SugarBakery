@@ -134,5 +134,16 @@ namespace SugarBakery.Controllers
             Session["Taikhoan"] = null;
             return RedirectToAction("SanPham", "SugarBakery");
         }
+
+
+        public ActionResult Thongtintk(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            var thongtintk = from s in data.tbKhachHangs where s.MaKH == id select s;
+            return View(thongtintk.Single());
+        }
     }
 }

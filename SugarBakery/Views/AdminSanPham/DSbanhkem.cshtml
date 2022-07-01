@@ -1,47 +1,25 @@
-﻿@using SugarBakery.Models
+﻿
+@using SugarBakery.Models
 @using PagedList.Mvc
-@model PagedList.PagedList<SugarBakery.Models.tbSanPham>
-
-@helper  Truncate(string input, int length)
-{
-    if (input.Length < length)
-    {
-        @input
-    }
-    else
-    {
-        @input.Substring(0, length)<text>...</text>
-    }
-}
-
-
+@model PagedList.PagedList<SugarBakery.Models.tbBanhKem>
 
 @{
-    ViewBag.Title = "DSsanpham";
+    ViewBag.Title = "DSbanhkem";
     Layout = "~/Views/Layout/_LayoutAdmin.cshtml";
 }
-
-
-
 <hr />
-<h2 style="text-align:center">QUẢN LÝ THÔNG TIN SẢN PHẨM</h2>
+<h2 style="text-align:center">QUẢN LÝ THÔNG TIN BÁNH KEM</h2>
 <hr />
 
-<a href="@Url.Action("Themsanpham","AdminSanPham")" class="ADD-Btn">
-    <p class="text">THÊM SẢN PHẨM</p>
+<a href="@Url.Action("Thembanhkem","AdminSanPham")" class="ADD-Btn">
+    <p class="text">THÊM BÁNH KEM</p>
     <p class="icon">&#43;</p>
 </a>
 
 <table class="table" border="1">
     <tr>
-        <th style="width: 200px; text-align: center"> Tên sản phẩm </th>
-        <th style="width: 100px; text-align: center"> Ảnh </th>
-        <th style="width: 300px; text-align: center"> Mô tả </th>
-        <th style="width: 100px; text-align: center"> Giá bán </th>
-        <th style="width: 150px; text-align: center"> Ngày cập nhật </th>
-        <th style="width: 120px; text-align: center"> Tên loại sản phẩm </th>
-        <th style="width: 120px; text-align: center "> Tên loại bánh </th>
-        <th style="width: 100px; text-align: center"> Tên đơn vị tính </th>
+        <th style="width: 200px; text-align: center"> Mã Bánh Kem </th>
+        <th style="width: 200px; text-align: center"> Tên Bánh Kem </th>
         <th style="width: 150px; text-align: center">  </th>
     </tr>
 
@@ -49,35 +27,15 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TenSP)
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.AnhSP)*@
-                <img src="@Url.Content("~/images/sanpham/"+ item.AnhSP)" width="100" />
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.MoTa)*@
-                @Truncate(item.MoTa, 50)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GiaBan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayCapNhat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaLoaiSP)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.MaBK)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MaDVT)
+                @Html.DisplayFor(modelItem => item.TenBK)
+
             </td>
             <td>
-                @Html.ActionLink("Sửa", "Suasanpham", new { id = item.MaSP }, new { @class = "btn btn-success" }) |
-                @Html.ActionLink("Chi tiết", "Chitietsanpham", new { id = item.MaSP }, new { @class = "btn btn-success" }) |
-                @Html.ActionLink("Xóa", "Xoasanpham", new { id = item.MaSP }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Sửa", "Suabanhkem", new { id = item.MaBK }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Xóa", "Xoabanhkem", new { id = item.MaBK }, new { @class = "btn btn-success" }) |
             </td>
         </tr>
     }
@@ -86,7 +44,7 @@
 
 @*Tao lien ket cac trang*@
 <div class="MenuTrang">
-    @Html.PagedListPager(Model, page => Url.Action("DSsanpham", new { page = page }))
+    @Html.PagedListPager(Model, page => Url.Action("DSbanhkem", new { page = page }))
 </div>
 <style>
     /*.MenuTrang li {
@@ -361,3 +319,4 @@
         }
     }
 </style>
+

@@ -122,7 +122,10 @@
                             else
                             {
                                 <li class="Login"><a href="@Url.Action("Dangnhap","NguoiDung")">Đăng Xuất</a></li>
-                                <li class="Login"><a href="#">Xin Chào @Session["User"]</a></li>
+                                <li class="Login">
+                                    <a href="@Url.Action("Thongtintk","NguoiDung")">Xin Chào @Session["User"]</a>
+                                </li>
+                                
                             }
                             <li>
                                 @Html.Action("GiohangPartial", "GioHang")

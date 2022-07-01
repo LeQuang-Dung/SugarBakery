@@ -17,54 +17,152 @@ namespace SugarBakery.Controllers
     public class AdminHoaDonController : Controller
     {
         dbSugarBakeryDataContext data = new dbSugarBakeryDataContext();
+
+
+        public string ReturnDateForDisplay
+        {
+            get
+            {
+                return this.ReturnDateForDisplay.ToString();
+            }
+        }
+
+
         // GET: AdminHoaDon
         //------------------------------ Phản  Hồi Khách Hàng ------------------------------------
         public ActionResult DSPhanHoi(int? page)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            int pagesize = 8;
+            int pageNum = (page ?? 1);
+            var list = data.tbPhanHoiKHs.OrderByDescending(n => n.MaKH);
+            return View(list.ToPagedList(pageNum, pagesize));
         }
 
         public ActionResult ChiTietPhanHoi(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            tbPhanHoiKH ph = data.tbPhanHoiKHs.SingleOrDefault(n => n.MaKH == id);
+            if (ph == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(ph);
         }
         [HttpGet]
         public ActionResult XoaPhanHoi(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            else
+            {
+                tbPhanHoiKH ph = data.tbPhanHoiKHs.SingleOrDefault(n => n.MaKH == id);
+                ViewBag.MaKH = ph.MaKH;
+                if (ph == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                return View(ph);
+            }
         }
         [HttpPost, ActionName("XoaPhanHoi")]
         public ActionResult XacNhanXoaPhanHoi(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            else
+            {
+                tbPhanHoiKH ph = data.tbPhanHoiKHs.SingleOrDefault(n => n.MaKH == id);
+                ViewBag.MaKH = ph.MaKH;
+                if (ph == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                data.tbPhanHoiKHs.DeleteOnSubmit(ph);
+                data.SubmitChanges();
+                return RedirectToAction("DSPhanHoi"); ;
+            }
         }
 
         //--------------------------- Khách Hàng ----------------------------------
         public ActionResult DSkh(int? page)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            int pagesize = 8;
+            int pageNum = (page ?? 1);
+            var list = data.tbKhachHangs.OrderByDescending(n => n.MaKH);
+            return View(list.ToPagedList(pageNum, pagesize));
+        }
+        public ActionResult ChiTietKH(int id , FormCollection collection)
+        {
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            tbKhachHang kh = data.tbKhachHangs.SingleOrDefault(n => n.MaKH == id);
+            if (kh == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(kh);
         }
 
-        [HttpGet]
-        public ActionResult Suakh(int id)
-        {
-            return View();
-        }
-
-        [HttpPost, ActionName("Suakh")]
-        public ActionResult XacNhanSuakh(int id)
-        {
-            return View();
-        }
         [HttpGet]
         public ActionResult Xoakh(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            else
+            {
+                tbKhachHang kh = data.tbKhachHangs.SingleOrDefault(n => n.MaKH == id);
+                ViewBag.MaKH = kh.MaKH;
+                if (kh == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                return View(kh);
+            }
         }
         [HttpPost, ActionName("Xoakh")]
         public ActionResult XacNhanXoakh(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            else
+            {
+                tbKhachHang kh = data.tbKhachHangs.SingleOrDefault(n => n.MaKH == id);
+                ViewBag.MaKH = kh.MaKH;
+                if (kh == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                data.tbKhachHangs.DeleteOnSubmit(kh);
+                data.SubmitChanges();
+                return RedirectToAction("DSkh"); ;
+            }
         }
 
         //--------------------------- Đơn Đặt Hàng ----------------------------------

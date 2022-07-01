@@ -266,43 +266,122 @@ namespace SugarBakery.Controllers
 
 
         //----------------------------------- Bánh Kem ------------------------------------
-        public ActionResult DSbanhkem()
+        public ActionResult DSbanhkem(int? page)
         {
-
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            int pagesize = 8;
+            int pageNum = (page ?? 1);
+            var list = data.tbBanhKems.OrderByDescending(s => s.MaBK).ToList();
+            return View(list.ToPagedList(pageNum, pagesize));
         }
 
         [HttpGet]
         public ActionResult Thembanhkem()
         {
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            ViewBag.MaBK = new SelectList(data.tbBanhKems.ToList().OrderBy(n => n.TenBK), "MaBK", "TenBK");
             return View();
         }
         [HttpPost]
-        public ActionResult Thembanhkem(tbBanhKem bk)
+        public ActionResult Thembanhkem(tbBanhKem bk, FormCollection collection, HttpPostedFileBase fileUpload)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            ViewBag.MaBK = new SelectList(data.tbBanhKems.ToList().OrderBy(n => n.TenBK), "MaBK", "TenBK");
+            if (ModelState.IsValid)
+            {  
+                data.tbBanhKems.InsertOnSubmit(bk);
+                data.SubmitChanges();
+            }
+            return RedirectToAction("DSbanhkem", "AdminSanPham");
         }
 
-        public ActionResult Suabanhkem()
+        public ActionResult Suabanhkem(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            tbBanhKem bk = data.tbBanhKems.SingleOrDefault(n => n.MaBK == id);
+            ViewBag.MaBK = new SelectList(data.tbBanhKems.ToList().OrderBy(n => n.TenBK), "MaBK", "TenBK", bk.MaBK);
+            if(bk == null )
+            {
+                Response.StatusCode = 404;
+                return null;
+            }    
+            
+            return View(bk);
         }
 
         [HttpPost, ActionName("Suabanhkem")]
-        public ActionResult XacNhanSuabanhkem()
+        public ActionResult XacNhanSuabanhkem(FormCollection collection, int id)
         {
-            return View();
+            var img = "";
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+
+            tbBanhKem bk = data.tbBanhKems.SingleOrDefault(n => n.MaBK == id);
+
+            if (bk == null )
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            UpdateModel(bk);
+            data.SubmitChanges();
+            return RedirectToAction("DSbanhkem");
         }
 
         [HttpGet]
         public ActionResult Xoabanhkem(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            else
+            {
+                tbBanhKem bk = data.tbBanhKems.SingleOrDefault(n => n.MaBK == id);
+
+                ViewBag.MaBK = bk.MaBK;
+                if (bk == null  )
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                return View(bk);
+            }
         }
         [HttpPost, ActionName("Xoabanhkem")]
-        public ActionResult XacNhanXoabanhkem()
+        public ActionResult XacNhanXoabanhkem(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            else
+            {
+                tbBanhKem bk = data.tbBanhKems.SingleOrDefault(n => n.MaBK == id);
+                ViewBag.MaBK = bk.MaBK;
+                if (bk == null )
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                data.tbBanhKems.DeleteOnSubmit(bk);
+                data.SubmitChanges();
+                return RedirectToAction("DSbanhkem");
+            }
         }
 
 
@@ -349,42 +428,120 @@ namespace SugarBakery.Controllers
 
 
         //----------------------------------- Đơn Vị Tính ---------------------------------------
-        public ActionResult DSdvt()
+        public ActionResult DSdvt(int? page)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            int pagesize = 8;
+            int pageNum = (page ?? 1);
+            var list = data.tbDonViTinhs.OrderByDescending(s => s.MaDVT).ToList();
+            return View(list.ToPagedList(pageNum, pagesize));
         }
         [HttpGet]
         public ActionResult ThemDvt()
         {
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            ViewBag.MaDVT = new SelectList(data.tbDonViTinhs.ToList().OrderBy(n => n.TenDVT), "MaDVT", "TenDVT","MoTa");
             return View();
         }
         [HttpPost]
         public ActionResult ThemDvt(tbDonViTinh dvt)
         {
-            return View();
+            if(Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            ViewBag.MaDVT = new SelectList(data.tbDonViTinhs.ToList().OrderBy(n => n.TenDVT), "MaDVT", "TenDVT", "MoTa");
+            if (ModelState.IsValid)
+            {
+                data.tbDonViTinhs.InsertOnSubmit(dvt);
+                data.SubmitChanges();
+            }
+            return RedirectToAction("DSdvt", "AdminSanPham");
+        }
+
+        public ActionResult Suadvt(int id)
+        {
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            tbDonViTinh dvt = data.tbDonViTinhs.SingleOrDefault(n => n.MaDVT == id);
+            ViewBag.MaBK = new SelectList(data.tbDonViTinhs.ToList().OrderBy(n => n.TenDVT), "MaDVT", "TenDVT", "MoTa", dvt.MaDVT);
+            if (dvt == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+
+            return View(dvt);
+        }
+
+        [HttpPost, ActionName("Suadvt")]
+        public ActionResult XacNhanSuadvt(FormCollection collection, int id)
+        {
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+
+            tbDonViTinh dvt = data.tbDonViTinhs.SingleOrDefault(n => n.MaDVT == id);
+
+            if (dvt == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            UpdateModel(dvt);
+            data.SubmitChanges();
+            return RedirectToAction("DSdvt");
         }
 
         [HttpGet]
-        public ActionResult XoaDvt()
+        public ActionResult Xoadvt(int id)
         {
-            return View();
-        }
-        [HttpPost, ActionName("XoaDvt")]
-        public ActionResult XacNhanXoaDvt()
-        {
-            return View();
-        }
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            else
+            {
+                tbDonViTinh dvt = data.tbDonViTinhs.SingleOrDefault(n => n.MaDVT == id);
 
-        [HttpGet]
-        public ActionResult SuaDvt()
-        {
-            return View();
+                ViewBag.MaBK = dvt.MaDVT;
+                if (dvt == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                return View(dvt);
+            }
         }
-
-        [HttpPost, ActionName("SuaDvt")]
-        public ActionResult XacNhanSuaDvt()
+        [HttpPost, ActionName("Xoadvt")]
+        public ActionResult XacNhanXoadvt(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            else
+            {
+                tbDonViTinh dvt = data.tbDonViTinhs.SingleOrDefault(n => n.MaDVT == id);
+                ViewBag.MaDVT = dvt.MaDVT;
+                if (dvt == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                data.tbDonViTinhs.DeleteOnSubmit(dvt);
+                data.SubmitChanges();
+                return RedirectToAction("DSdvt");
+            }
         }
     }
 }
