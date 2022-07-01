@@ -44,7 +44,7 @@ namespace SugarBakery.Controllers
         {
             if (Session["Taikhoan"] == null || Session["Taikhoan"].ToString() == "")
             {
-                return RedirectToAction("Login", "NguoiDung");
+                return RedirectToAction("Dangnhap", "NguoiDung");
             }
             else
             {
@@ -63,7 +63,7 @@ namespace SugarBakery.Controllers
                 {
                     data.tbPhanHoiKHs.InsertOnSubmit(ht);
                     data.SubmitChanges();
-                    return RedirectToAction("Contact", "Home");
+                    return RedirectToAction("LienHe", "Home");
                 }
             }
         }
