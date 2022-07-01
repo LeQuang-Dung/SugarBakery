@@ -2466,10 +2466,6 @@
     <Content Include="Views\AdminHoaDon\Suadonhang.cshtml" />
     <Content Include="Views\AdminHoaDon\XoaChiTietDonDatHang.cshtml" />
     <Content Include="Views\AdminHoaDon\Xoadonhang.cshtml" />
-    <Content Include="Views\GioHang\Giohang.cshtml" />
-    <Content Include="Views\GioHang\GiohangPartial.cshtml" />
-    <Content Include="Views\GioHang\Xacnhandonhang.cshtml" />
-    <Content Include="Views\GioHang\Dathang.cshtml" />
     <Content Include="Views\AdminHoaDon\DSPhanHoi.cshtml" />
     <Content Include="Views\AdminHoaDon\ChiTietPhanHoi.cshtml" />
     <Content Include="Views\AdminHoaDon\XoaPhanHoi.cshtml" />
@@ -2485,6 +2481,10 @@
     <Content Include="Views\AdminSanPham\ThemDvt.cshtml" />
     <Content Include="Views\AdminSanPham\Suadvt.cshtml" />
     <Content Include="Views\AdminSanPham\Xoadvt.cshtml" />
+    <Content Include="Views\GioHang\Giohang.cshtml" />
+    <Content Include="Views\GioHang\GiohangPartial.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\GioHang\XacNhanDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

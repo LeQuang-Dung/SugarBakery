@@ -26,14 +26,14 @@
             <tr style="text-align:center; ">
                 <td>@item.masp</td>
                 <td>@item.tensp</td>
-                <td><img src="~/images/sampham/@item.anhbia" width="100" /></td>
-                @using (Html.BeginForm("CapnhatGiohang", "GioHang", new { @iMasp = item.masp }))
+                <td><img src="~/images/sanpham/@item.anhbia" alt="Alternate Text" width="100" /></td>
+                @using (Html.BeginForm("CapNhatGioHang", "Giohang", new { @id = item.masp }))
                 {
                     <td><input type="number" min="1" name="Soluong" value="@item.soluong" style="background-color:white" /></td>
                     @*có min bằng 1 để ràng buộc đơn hàng phải có sl 1*@
                     <td>@String.Format("{0:0,0 }", item.dongia) vnđ</td>
                     <td>@String.Format("{0:0,0 }", item.thanhtien) vnđ</td>
-                    <td><a class="btn btn-danger" style="background-color: #cecece; border-radius: 10px; font-weight: bold; border-color: #808080; color: black; " href="@Url.Action("XoaGiohang","GioHang", new {iMasp = @item.masp})">Xóa</a></td>
+                    <td><a class="btn btn-danger" style="background-color: #cecece; border-radius: 10px; font-weight: bold; border-color: #808080; color: black; " href="@Url.Action("XoaGioHang","GioHang", new {id = @item.masp})">Xóa</a></td>
                     <td><input type="submit" style="background-color: #cecece; border-radius: 10px; border-color: #808080; color: black; font-weight: bold; " class="btn btn-warning" value="Cập nhật" /></td>
 
                 }
@@ -51,8 +51,8 @@
         <tr style="text-align:right; font-weight:bold;">
 
             <td colspan="9">
-                <a style="background-color: #cecece; border-radius: 10px; border-color: #808080; color: black; font-weight: bold;" href="@Url.Action("Dathang","GioHang")" class="btn btn-default">Đặt Hàng</a>
-                <a style="background-color: #cecece; border-radius: 10px; border-color: #808080; color: black; font-weight: bold; " class="btn btn-warning" href="@Url.Action("XoatatcaGiohang","GioHang")">Xóa Tất Cả</a>
+                <a style="background-color: #cecece; border-radius: 10px; border-color: #808080; color: black; font-weight: bold;" href="@Url.Action("DatHang","GioHang")" class="btn btn-default">Đặt Hàng</a>
+                <a style="background-color: #cecece; border-radius: 10px; border-color: #808080; color: black; font-weight: bold; " class="btn btn-warning" href="@Url.Action("RemoveAll","GioHang")">Xóa Tất Cả</a>
             </td>
         </tr>
 
@@ -94,11 +94,12 @@
         }
 
     media (max-width: 1024px) {
-        content-giohang{
+        content-giohang
 
+    {
         font-size: 12px;
     }
 
     }
-
+    }
 </style>

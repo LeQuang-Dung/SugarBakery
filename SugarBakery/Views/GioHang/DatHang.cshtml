@@ -2,7 +2,7 @@
 @model List<GioHang>
 
 @{
-    ViewBag.Title = "Đơn Hàng";
+    ViewBag.Title = "DatHang";
     Layout = "~/Views/Layout/_LayoutUser.cshtml";
 }
 
@@ -22,8 +22,8 @@
             <tr style="text-align:center; font-weight:bold">
                 <td>@item.masp</td>
                 <td>@item.tensp</td>
-                <td><img src="~/Sản Phẩm/@item.anhbia" alt="Alternate Text" /></td>
-                @using (Html.BeginForm("CapnhatGiohang", "GioHang", new { iMasp = item.masp }))
+                <td><img src="~/images/sanpham/@item.anhbia" alt="Alternate Text" width="100" /></td>
+                @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { id = item.masp }))
                 {
                     <td>@item.soluong</td>
                     <td>@String.Format("{0:0,0 }", @item.dongia)</td>
