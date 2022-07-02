@@ -1,26 +1,12 @@
 ﻿@using SugarBakery.Models
 @model List<GioHang>
 
-@{
-    ViewBag.Title = "Giohang";
-    Layout = "~/Views/Layout/_LayoutUser.cshtml";
-}
 
-<div class="content-giohang">
-    <h1 style="text-align:center;margin:0 auto;">Giỏ hàng</h1>
-    <table align="center" border="1">
-        <tr style="text-align: center; font-weight: bold;">
-            <td>Mã Sản Phẩm</td>
-            <td>Tên Sản Phẩm</td>
-            <td>Ảnh</td>
-            <td>Số Lượng</td>
-            <td>Đơn Giá</td>
-            <td>Thành Tiền</td>
-            <td>Xóa</td>
-            <td>Cập Nhật</td>
 
-        </tr>
 
+<<<<<<< HEAD
+<body>
+=======
         @foreach (var item in Model)
         {
             <tr style="text-align:center; ">
@@ -35,30 +21,216 @@
                     <td>@String.Format("{0:0,0 }", item.thanhtien) vnđ</td>
                     <td><a class="btn btn-danger" style="background-color: #cecece; border-radius: 10px; font-weight: bold; border-color: #808080; color: black; " href="@Url.Action("XoaGioHang","GioHang", new {id = @item.masp})">Xóa</a></td>
                     <td><input type="submit" style="background-color: #cecece; border-radius: 10px; border-color: #808080; color: black; font-weight: bold; " class="btn btn-warning" value="Cập nhật" /></td>
+>>>>>>> 8a0c76bc855100d9789c483ea546a8fa427ec19c
 
-                }
+    <div class="content-giohang">
+        <h1 style="text-align:center;margin:0 auto;">Giỏ hàng</h1>
+        <table align="center" border="1">
+            <tr style="text-align: center; font-weight: bold;">
+                <td>Mã Sản Phẩm</td>
+                <td>Tên Sản Phẩm</td>
+                <td>Ảnh</td>
+                <td>Số Lượng</td>
+                <td>Đơn Giá</td>
+                <td>Thành Tiền</td>
+                <td>Xóa</td>
+                <td>Cập Nhật</td>
 
             </tr>
-        }
-        <tr style="text-align:center;">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Số Lượng: @ViewBag.TongSoLuong</td>
-            <td colspan="3"><strong>Tổng Tiền: <p style="color:red; display:inline-block">@String.Format("{0:0,0 }", ViewBag.TongTien) vnđ</p></strong>  </td>
-            <td></td>
-        </tr>
-        <tr style="text-align:right; font-weight:bold;">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.masp</td>
+                    <td>@item.tensp</td>
+                    <td>
+                        <img src="~/images/sampham/@item.anhbia" class="img-fluid">
+                    </td>
+                    @using (Html.BeginForm("CapnhatGiohang", "GioHang", new { @iMaSp = item.masp }))
+                    {
+                        <td>
+                            <input id="txtSoLuong" type="number" min="1" name="Soluong" value="@item.soluong" size="1" />
+                        </td>
+                        <td>
+                            @String.Format("{0:0,0 }", item.dongia) VNĐ
+                        </td>
+                        <td>
+                            @String.Format("{0:0,0 }", item.thanhtien) VNĐ
+                        </td>
+                        <td>
+                            <a href="@Url.Action("XoaGiohang", new { @iMaSp = item.masp })" style="color: #919191;">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <input type="submit" value="Cập Nhật" class="btn btn-outline-primary text-dark" />
+                        </td>
+                    }
+                </tr>
+            }
 
+<<<<<<< HEAD
+=======
             <td colspan="9">
                 <a style="background-color: #cecece; border-radius: 10px; border-color: #808080; color: black; font-weight: bold;" href="@Url.Action("DatHang","GioHang")" class="btn btn-default">Đặt Hàng</a>
                 <a style="background-color: #cecece; border-radius: 10px; border-color: #808080; color: black; font-weight: bold; " class="btn btn-warning" href="@Url.Action("RemoveAll","GioHang")">Xóa Tất Cả</a>
             </td>
         </tr>
+>>>>>>> 8a0c76bc855100d9789c483ea546a8fa427ec19c
 
-    </table>
-</div>
+            <tr style="text-align:center;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Số Lượng: @ViewBag.TongSoLuong</td>
+                <td colspan="3"><strong>Tổng Tiền: <p style="color:red; display:inline-block">@String.Format("{0:0,0 }", ViewBag.TongTien) vnđ</p></strong>  </td>
+                <td></td>
+            </tr>
+            <tr style="text-align:right; font-weight:bold;">
 
+                <td colspan="9">
+                    <a style="background-color: #cecece; border-radius: 10px; border-color: #808080; color: black; font-weight: bold;" href="@Url.Action("Dathang","GioHang")" class="btn btn-default">Đặt Hàng</a>
+                    <a style="background-color: #cecece; border-radius: 10px; border-color: #808080; color: black; font-weight: bold; " class="btn btn-warning" href="@Url.Action("XoatatcaGiohang","GioHang")">Xóa Tất Cả</a>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+       @* chân layout *@
+    <div style="height:0px;width:0px;overflow:hidden;"></div>
+    <footer id="ttr_footer">
+        <div class="ttr_footerhome_html_row0 row">
+            <div class="post_column col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="ttr_footerhome_html_column00">
+                    <div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+                    <div class="html_content">
+                        <p style="margin:0em 0em 0em 0em;text-align:center;">
+                            <span class="ttr_image" style="float:none;display:block;text-align:center;overflow:hidden;margin:2.86em 0em 0em 0em;">
+                                <span>
+                                    <img class="ttr_uniform" src="images/104.png" style="max-width:205px;max-height:66px;" />
+                                    <img class="ttr_uniform" src="~/images/logofooter.png" style="max-width:205px;max-height:66px;" />
+                                </span>
+                            </span>
+                        </p>
+                        <p style="margin:1.43em 0em 0em 2.86em;line-height:1.76056338028169;">
+                            <span style="color:rgba(179,179,179,1);background-color:transparent;">
+
+                            </span>
+                        </p>
+                        <p style="margin:0em 0em 0em 2.86em;line-height:1.76056338028169;">
+                            <br style="color:rgba(179,179,179,1);background-color:transparent;" />
+                        </p>
+                    </div>
+                    <div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+                </div>
+            </div>
+            <div class="clearfix visible-xs-block">
+            </div>
+            <div class="post_column col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="ttr_footerhome_html_column01">
+                    <div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+                    <div class="html_content">
+                        <p style="margin:0em 0em 0.71em 0em;">
+                            <br style="font-weight:700;font-size:1.714em;color:rgba(255,255,255,1);" />
+                        </p>
+                        <p style="margin:0em 0em 0.71em 1.43em;">
+                            <span style="font-weight:700;font-size:1.714em;color:rgba(255,255,255,1);">useful links </span>
+                        </p>
+                        <p style="margin:0em 0em 0em 1.43em;line-height:1.76056338028169;">
+                            <span style="font-weight:700;color:rgba(179,179,179,1);"># </span><span style="color:rgba(179,179,179,1);">sagittis mauris in pulvinar</span>
+                        </p>
+                        <p style="margin:0em 0em 0em 1.43em;line-height:1.76056338028169;"><br style="color:rgba(179,179,179,1);" /></p>
+                    </div>
+                    <div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+                </div>
+            </div>
+            <div class="clearfix visible-sm-block visible-md-block visible-xs-block"></div>
+            <div class="post_column col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="ttr_footerhome_html_column02">
+                    <div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+                    <div class="html_content">
+                        <p style="margin:0em 0em 0.71em 1.43em;">
+                            <br style="font-weight:700;font-size:1.714em;color:rgba(255,255,255,1);" />
+                        </p>
+                        <p style="margin:0em 0em 0.71em 1.43em;">
+                            <span style="font-weight:700;font-size:1.714em;color:rgba(255,255,255,1);">địa điểm của chúng tôi </span>
+                        </p>
+                        <p style="margin:0em 0em 0em 1.43em;line-height:1.76056338028169;">
+                            <span style="color:rgba(179,179,179,1);">hutech, quận 9, thành phố hồ chí minh</span>
+                        </p>
+                        <p style="margin:0em 0em 0em 1.43em;line-height:1.76056338028169;">
+                            <span style="font-family:'handlee','arial';font-weight:700;font-size:1.143em;color:rgba(179,179,179,1);">+123 456 7890</span>
+                        </p>
+                        <p style="margin:0em 0em 0em 1.43em;line-height:1.76056338028169;">
+                            <span style="color:rgba(179,179,179,1);">sugarbakery@mail.com</span>
+                        </p>
+                        <p style="margin:0em 0em 0em 1.43em;line-height:1.76056338028169;">
+                            <br style="color:rgba(179,179,179,1);" />
+                        </p>
+                    </div>
+                    <div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+                </div>
+            </div>
+            <div class="clearfix visible-xs-block">
+            </div>
+            <div class="post_column col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="ttr_footerhome_html_column03">
+                    <div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+                    <div class="html_content">
+                        <p style="margin:0em 0em 0.71em 1.43em;">
+                            <br style="font-weight:700;font-size:1.714em;color:rgba(255,255,255,1);" />
+                        </p>
+                        <p style="margin:0em 0em 0.71em 1.43em;">
+                            <span style="font-weight:700;font-size:1.714em;color:rgba(255,255,255,1);">giờ mở của </span>
+                            <br style="font-family:'handlee','arial';font-weight:700;color:rgba(105,105,105,1);" />
+                        </p>
+                        <p style="margin:0em 0em 0em 1.43em;line-height:1.76056338028169;"><span style="color:rgba(179,179,179,1);">monday - friday : 8am to 11pm </span></p>
+                        <p style="margin:0em 0em 0em 1.43em;line-height:1.76056338028169;"><span style="color:rgba(179,179,179,1);">saturday - sunday : 9am to 12pm</span></p>
+                        <p style="margin:0em 0em 0em 1.43em;line-height:1.76056338028169;"><br style="color:rgba(179,179,179,1);" /></p>
+                    </div>
+                    <div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+                </div>
+            </div>
+            <div class="clearfix visible-lg-block visible-sm-block visible-md-block visible-xs-block">
+            </div>
+        </div>
+        <div class="ttr_footer_bottom_footer">
+            <div class="ttr_footer_bottom_footer_inner">
+                <div id="ttr_copyright">
+
+                        <a href="http://www.kixgo.com">designed by kixgo</a> <a href="http://www.kixgo.com">
+                            website builder
+                        </a>
+                    </div>
+                <div id="ttr_footer_designed_by_links">
+                    <p>&copy; 2022. design by <a href="http://templated.co" rel="nofollow">sugar bakery</a>.</p>
+                </div>
+                <a href="https://www.facebook.com/truongdinh.truong61" class="ttr_footer_facebook" target="_self">
+                </a>
+                <a href="" class="ttr_footer_linkedin" target="_self">
+                </a>
+                <a href="https://twitter.com/trnginh84751498" class="ttr_footer_twitter" target="_self">
+                </a>
+                <a href="" class="ttr_footer_googleplus" target="_self">
+                </a>
+            </div>
+        </div>
+    </footer>
+    <div style="height:0px;width:0px;overflow:hidden;-webkit-margin-bottom-collapse: separate;"></div>
+        </div>
+    <script type="text/javascript">
+        webfontconfig = {
+            google: { families: ['open+sans:700', 'handlee:700', 'playball', 'courgette:700', 'courgette', 'handlee', 'open+sans'] }
+        };
+        (function () {
+            var wf = document.createelement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1.0.31/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getelementsbytagname('script')[0];
+            s.parentnode.insertbefore(wf, s);
+        })();
+    </script>
+</body>
 <style>
     * {
         padding: 0;
@@ -99,7 +271,9 @@
     {
         font-size: 12px;
     }
-
     }
+<<<<<<< HEAD
+=======
     }
+>>>>>>> 8a0c76bc855100d9789c483ea546a8fa427ec19c
 </style>

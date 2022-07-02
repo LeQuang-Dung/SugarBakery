@@ -118,6 +118,7 @@ namespace SugarBakery.Controllers
                     {
                         Session["User"] = kh.TenKH;
                         Session["Taikhoan"] = kh;
+                        
                         return RedirectToAction("SanPham", "SugarBakery");
                     }
                     else
@@ -136,14 +137,10 @@ namespace SugarBakery.Controllers
         }
 
 
-        public ActionResult Thongtintk(int? id)
+        public ActionResult Thongtintk()
         {
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
-            var thongtintk = from s in data.tbKhachHangs where s.MaKH == id select s;
-            return View(thongtintk.Single());
+            tbKhachHang kh = (tbKhachHang)Session["Taikhoan"];
+            return View(kh);
         }
     }
 }

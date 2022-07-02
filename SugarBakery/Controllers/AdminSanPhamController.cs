@@ -387,9 +387,16 @@ namespace SugarBakery.Controllers
 
 
         //-----------------------------------Nhà Cung Cấp---------------------------------------
-        public ActionResult DSncc()
+        public ActionResult DSncc(int? page)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            int pagesize = 8;
+            int pageNum = (page ?? 1);
+            var list = data.tbNhaCungCaps.OrderByDescending(s => s.MaNCC).ToList();
+            return View(list.ToPagedList(pageNum, pagesize));
         }
         [HttpGet]
         public ActionResult ThemNcc()

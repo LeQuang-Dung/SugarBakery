@@ -149,12 +149,21 @@ namespace SugarBakery.Controllers
             dONDATHANG.MaKH = kh.MaKH;
             dONDATHANG.NgayDat = DateTime.Now;
             string DiaChi = collection["DiaChi"];
+<<<<<<< HEAD
+            var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["Ngaygiao"]);
+            ddh.NgayGiao = DateTime.Parse(ngaygiao);
+            ddh.MaTTHD = 1;
+            tthd.MaTTHD = (int)ddh.MaTTHD;
+            data.tbDonHangs.InsertOnSubmit(ddh);
+            data.tbTinhTrangHoaDons.InsertOnSubmit(tthd);
+=======
             //string nvc = collection["TenVanChuyen"];
             //dONDATHANG.Ngaygiao = DateTime.Parse(ngaygiao);
             dONDATHANG.TongTien = Decimal.Parse(TongTien().ToString());
             dONDATHANG.MaTTHD = '1';
             //dONDATHANG.Dathanhtoan = false;
             data.tbDonHangs.InsertOnSubmit(dONDATHANG);
+>>>>>>> 8a0c76bc855100d9789c483ea546a8fa427ec19c
             data.SubmitChanges();
             foreach (var item in gioHangs)
             {
