@@ -27,6 +27,8 @@ namespace SugarBakery.Controllers
 
             //Lay top 6 san pham ban chay nhat
             var sanphammoi = Laysanpham(30);
+            string s = Request.QueryString["s"];
+            if (!string.IsNullOrEmpty(s)) sanphammoi = data.tbSanPhams.OrderByDescending(a => a.MaSP).Take(30).Where(w => w.TenSP.Contains(s)).ToList();
             return View(sanphammoi.ToPagedList(pageNum, pageSize));
         }
 
@@ -37,8 +39,9 @@ namespace SugarBakery.Controllers
             {
                 return HttpNotFound();
             }
-            var chitietSP = from s in data.tbSanPhams where s.MaSP == id select s;
-            return View(chitietSP.Single());
+            var chitietSP = (from s in data.tbSanPhams where s.MaSP == id select s).Single();
+            ViewBag.Description = chitietSP.MoTa;
+            return View(chitietSP);
         }
 
         //==================== tat ca san pham ====================

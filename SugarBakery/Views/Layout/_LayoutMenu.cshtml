@@ -1,4 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    string content = ViewBag.Description;
+    if (string.IsNullOrEmpty(content))
+    {
+        content = "Cửa hàng bán bánh kem các loại.";
+    }
+    else
+    {
+        content = content.Substring(0, 100) + "...";
+    }
+}}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -14,9 +25,8 @@
     <script type="text/javascript" src="~/Scripts/contactform.js">
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        Sugar Bakery
-    </title>
+    <title>Sugar Bakery</title>
+    <meta name="description" content="@content" />
     <link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="~/Content/style.css" type="text/css" media="screen" />
     <link href="~/Content/style0.css" rel="stylesheet" type="text/css" media="screen" />
@@ -163,11 +173,9 @@
             <ul>
                 <li>
                     <div id="search">
-                        <form method="get" action="#">
-                            <div>
-                                <input type="text" name="s" id="search-text" value="" />
-                                <input type="submit" id="search-submit" value="Tìm Kiếm" />
-                            </div>
+                        <form method="get" action="" id="frm-search">
+                            <input type="text" name="s" id="search-text" />
+                            <a href="javascript:" onclick="document.getElementById('frm-search').submit();" id="search-submit" style="padding: 8px;">Tìm kiếm</a>
                         </form>
                     </div>
                     <div style="clear: both;">&nbsp;</div>
