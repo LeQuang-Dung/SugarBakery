@@ -2485,6 +2485,14 @@
     <Content Include="Views\GioHang\GiohangPartial.cshtml" />
     <Content Include="Views\GioHang\DatHang.cshtml" />
     <Content Include="Views\GioHang\XacNhanDonHang.cshtml" />
+    <Content Include="Views\AdminSanPham\DSloaisanpham.cshtml" />
+    <Content Include="Views\AdminSanPham\Themlsp.cshtml" />
+    <Content Include="Views\AdminSanPham\Sualsp.cshtml" />
+    <Content Include="Views\AdminSanPham\Xoalsp.cshtml" />
+    <Content Include="Views\AdminSanPham\DSncc.cshtml" />
+    <Content Include="Views\AdminSanPham\ThemNcc.cshtml" />
+    <Content Include="Views\AdminSanPham\XoaNcc.cshtml" />
+    <Content Include="Views\AdminSanPham\SuaNcc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
