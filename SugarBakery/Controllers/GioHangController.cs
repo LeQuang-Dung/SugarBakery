@@ -178,6 +178,7 @@ namespace SugarBakery.Controllers
                 CT.ThanhTien = (decimal)item.thanhtien;
                 ddh.DiaChi = DiaChi;
 
+                ddh.Email = kh.Email;
                 ddh.NguoiNhan = NguoiNhan;
                 ddh.SDT = kh.SDT;
                 ddh.GhiChu = GhiChu;
