@@ -15,131 +15,116 @@ namespace SugarBakery.Controllers
         //Tao doi tuong data chua du lieu tu model dbnongsan da tao
         dbSugarBakeryDataContext data = new dbSugarBakeryDataContext();
         // GET: GioHang
-        public List<GioHang> Laygiohang()
+        public List<GioHang> LayGioHang()
         {
-            List<GioHang> lstgh = Session["GioHang"] as List<GioHang>;
-            if (lstgh == null)
+            List<GioHang> list = Session["GioHang"] as List<GioHang>;
+            if (list == null)
             {
-                //Neu gio hang chua ton tai thi khoi tao listGiohang
-                lstgh = new List<GioHang>();
-                Session["GioHang"] = lstgh;
+                list = new List<GioHang>();
+                Session["GioHang"] = list;
             }
-            return lstgh;
+            return list;
         }
 
-        public ActionResult ThemGiohang(int masp, string strURL)
+        public ActionResult ThemGioHang(int masp, string strUrl)
         {
-            //Lay ra Session gio hang
-            List<GioHang> lstgh = Laygiohang();
-            //Kiem tra sp nay ton tai trong Session["Giohang"] chua?
-            GioHang sp = lstgh.Find(n => n.masp == masp);
+
+            List<GioHang> gioHangs = LayGioHang();
+
+            GioHang sp = gioHangs.Find(n => n.masp == masp);
             if (sp == null)
             {
                 sp = new GioHang(masp);
-                lstgh.Add(sp);
-                return Redirect(strURL);
+                gioHangs.Add(sp);
+                return Redirect(strUrl);
             }
             else
             {
                 sp.soluong++;
-                return Redirect(strURL);
+                return Redirect(strUrl);
             }
         }
 
-        //Tong so luong
         private int TongSoLuong()
         {
             int Tongsoluong = 0;
-            List<GioHang> lstgh = Session["GioHang"] as List<GioHang>;
-            if (lstgh != null)
+            List<GioHang> gioHangs = Session["GioHang"] as List<GioHang>;
+            if (gioHangs != null)
             {
-                Tongsoluong = lstgh.Sum(n => n.soluong);
+                Tongsoluong = gioHangs.Sum(n => n.soluong);
             }
             Session["TongSoLuong"] = Tongsoluong;
             return Tongsoluong;
         }
 
-        //Tinh tong tien
         private double TongTien()
         {
             double tongtien = 0;
-            List<GioHang> lstgh = Session["GioHang"] as List<GioHang>;
-            if (lstgh != null)
+            List<GioHang> gioHangs = Session["GioHang"] as List<GioHang>;
+            if (gioHangs != null)
             {
-                tongtien = lstgh.Sum(n => n.thanhtien);
+                tongtien = gioHangs.Sum(n => n.thanhtien);
             }
             return tongtien;
         }
 
-        //Xay dung trang gio hang
         public ActionResult Giohang()
         {
-            List<GioHang> lstgh = Laygiohang();
-            if (lstgh.Count == 0)
+            List<GioHang> gioHangs = LayGioHang();
+            if (gioHangs.Count == 0)
             {
                 return RedirectToAction("SanPham", "SugarBakery");
             }
             ViewBag.TongSoLuong = TongSoLuong();
             ViewBag.TongTien = TongTien();
-            return View(lstgh);
+            return View(gioHangs);
         }
 
         public ActionResult GiohangPartial()
         {
-            ViewBag.TongSoluong = TongSoLuong();
+            ViewBag.TongSoLuong = TongSoLuong();
             ViewBag.TongTien = TongTien();
             return PartialView();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //Xoa gio hang
-        public ActionResult XoaGiohang(int iMasp)
+        public ActionResult XoaGioHang(int id)
         {
-            //Lay gio hang tu session
-            List<GioHang> lstgh = Laygiohang();
-            //Kiem tra san pham da co trong Session["Giohang"]
-            GioHang gh = lstgh.SingleOrDefault(n => n.masp == iMasp);
-            //Neu ton tai thi cho sua Soluong
-            if (gh != null)
+            List<GioHang> gioHangs = LayGioHang();
+            GioHang sessiongiohang = gioHangs.SingleOrDefault(n => n.masp == id);
+            if (sessiongiohang != null)
             {
-                lstgh.RemoveAll(n => n.masp == iMasp);
+                gioHangs.RemoveAll(n => n.masp == id);
                 return RedirectToAction("GioHang");
             }
-            if (lstgh.Count == 0)
+            if (gioHangs.Count == 0)
             {
                 return RedirectToAction("SanPham", "SugarBakery");
             }
             return RedirectToAction("GioHang");
         }
 
-        //Cap nhat gio hang
-        public ActionResult CapnhatGiohang(int iMasp, FormCollection f)
+        public ActionResult CapNhatGioHang(int id, FormCollection f)
         {
-            //Lay gio hang tu session
-            List<GioHang> lstgh = Laygiohang();
-            //Kiem tra san pham da co trong session["Giohang"]
-            GioHang gh = lstgh.SingleOrDefault(n => n.masp == iMasp);
-            //Neu ton tai thi cho sua Soluong
-            if (gh != null)
+            List<GioHang> gioHangs = LayGioHang();
+            GioHang sessiongiohang = gioHangs.SingleOrDefault(n => n.masp == id);
+            if (sessiongiohang != null)
             {
-                gh.soluong = int.Parse(f["Soluong"].ToString());
+                sessiongiohang.soluong = int.Parse(f["Soluong"].ToString());
+
             }
             return RedirectToAction("Giohang");
         }
 
-        public ActionResult XoatatcaGiohang()
+        public ActionResult RemoveAll()
         {
-            //Lay gio hang tu session
-            List<GioHang> lstGiohang = Laygiohang();
-            lstGiohang.Clear();
+            List<GioHang> gioHangs = LayGioHang();
+            gioHangs.Clear();
             return RedirectToAction("SanPham", "SugarBakery");
         }
-
-        //Hien thi view Dathang de cap nhat cac thong tin cho don hang
         [HttpGet]
-        public ActionResult Dathang()
+        public ActionResult DatHang()
         {
+
             if (Session["Taikhoan"] == null || Session["Taikhoan"].ToString() == "")
             {
                 return RedirectToAction("Dangnhap", "NguoiDung");
@@ -148,53 +133,60 @@ namespace SugarBakery.Controllers
             {
                 return RedirectToAction("SanPham", "SugarBakery");
             }
-
-            //Lay gi hang tu session
-            List<GioHang> lstgh = Laygiohang();
+            List<GioHang> gioHangs = LayGioHang();
             ViewBag.TongSoLuong = TongSoLuong();
             ViewBag.TongTien = TongTien();
-
-            return View(lstgh);
+            return View(gioHangs);
         }
-
         [HttpPost]
-        public ActionResult Dathang(FormCollection collection)
+        public ActionResult DatHang(FormCollection collection)
         {
-            //Them don hang
-            tbTinhTrangHoaDon tthd = new tbTinhTrangHoaDon();
-            tbDonHang ddh = new tbDonHang();
+            tbSanPham sANPHAM = new tbSanPham();
+            tbDonHang dONDATHANG = new tbDonHang();
+            tbChiTietDonHang CTDH = new tbChiTietDonHang();
             tbKhachHang kh = (tbKhachHang)Session["Taikhoan"];
-            List<GioHang> gh = Laygiohang();
-            ddh.MaKH = kh.MaKH;
-            ddh.NgayDat = DateTime.Now;
+            List<GioHang> gioHangs = LayGioHang();
+            dONDATHANG.MaKH = kh.MaKH;
+            dONDATHANG.NgayDat = DateTime.Now;
             string DiaChi = collection["DiaChi"];
+<<<<<<< HEAD
             var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["Ngaygiao"]);
             ddh.NgayGiao = DateTime.Parse(ngaygiao);
             ddh.MaTTHD = 1;
-            //ddh.Dathanhtoan = false;
+            tthd.MaTTHD = (int)ddh.MaTTHD;
             data.tbDonHangs.InsertOnSubmit(ddh);
+            data.tbTinhTrangHoaDons.InsertOnSubmit(tthd);
+=======
+            //string nvc = collection["TenVanChuyen"];
+            //dONDATHANG.Ngaygiao = DateTime.Parse(ngaygiao);
+            dONDATHANG.TongTien = Decimal.Parse(TongTien().ToString());
+            dONDATHANG.MaTTHD = '1';
+            //dONDATHANG.Dathanhtoan = false;
+            data.tbDonHangs.InsertOnSubmit(dONDATHANG);
+>>>>>>> 8a0c76bc855100d9789c483ea546a8fa427ec19c
             data.SubmitChanges();
-            //Them chi tiet don hang
-            foreach (var item in gh)
+            foreach (var item in gioHangs)
             {
-                tbChiTietDonHang ctdh = new tbChiTietDonHang();
-                ctdh.MaDH = ddh.MaDH;
-                ctdh.MaSP = item.masp;
-                ctdh.SoLuong = item.soluong;
-                ctdh.DonGia = (decimal)item.dongia;
-                ctdh.ThanhTien = (decimal)item.thanhtien;
-                ddh.DiaChi = DiaChi;
-                data.tbChiTietDonHangs.InsertOnSubmit(ctdh);
+                tbChiTietDonHang CT = new tbChiTietDonHang();
+                tbSanPham SP = new tbSanPham();
+                //DONDATHANG dONDATHANG = new DONDATHANG();
+                CT.MaDH = dONDATHANG.MaDH;
+                CT.MaSP = item.masp;
+                CT.SoLuong = item.soluong;
+                CT.DonGia = (decimal)item.dongia;
+                CT.ThanhTien = (decimal)item.thanhtien;
+                dONDATHANG.DiaChi = DiaChi;
+                //              dONDATHANG.MaVC = Int32.Parse(nvc);
+                data.tbChiTietDonHangs.InsertOnSubmit(CT);
             }
             data.SubmitChanges();
             Session["GioHang"] = null;
-            return RedirectToAction("Xacnhandonhang", "GioHang");
+            return RedirectToAction("XacNhanDonHang", "GioHang");
         }
-
-        public ActionResult Xacnhandonhang()
+   
+        public ActionResult XacNhanDonHang()
         {
             return View();
         }
-
     }
 }

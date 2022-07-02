@@ -38,7 +38,7 @@ namespace SugarBakery.Controllers
             }
             int pagesize = 8;
             int pageNum = (page ?? 1);
-            var list = data.tbPhanHoiKHs.OrderByDescending(n => n.MaKH);
+            var list = data.tbPhanHoiKHs.OrderByDescending(n => n.MaKH).ToList();
             return View(list.ToPagedList(pageNum, pagesize));
         }
 
@@ -106,7 +106,7 @@ namespace SugarBakery.Controllers
             }
             int pagesize = 8;
             int pageNum = (page ?? 1);
-            var list = data.tbKhachHangs.OrderByDescending(n => n.MaKH);
+            var list = data.tbKhachHangs.OrderByDescending(n => n.MaKH).ToList();
             return View(list.ToPagedList(pageNum, pagesize));
         }
         public ActionResult ChiTietKH(int id , FormCollection collection)
