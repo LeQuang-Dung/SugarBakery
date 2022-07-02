@@ -141,41 +141,38 @@ namespace SugarBakery.Controllers
         [HttpPost]
         public ActionResult DatHang(FormCollection collection)
         {
+            tbTinhTrangHoaDon tthd = new tbTinhTrangHoaDon();
             tbSanPham sANPHAM = new tbSanPham();
-            tbDonHang dONDATHANG = new tbDonHang();
+            tbDonHang ddh = new tbDonHang();
             tbChiTietDonHang CTDH = new tbChiTietDonHang();
             tbKhachHang kh = (tbKhachHang)Session["Taikhoan"];
             List<GioHang> gioHangs = LayGioHang();
-            dONDATHANG.MaKH = kh.MaKH;
-            dONDATHANG.NgayDat = DateTime.Now;
+            ddh.MaKH = kh.MaKH;
+            ddh.NgayDat = DateTime.Now;
             string DiaChi = collection["DiaChi"];
-<<<<<<< HEAD
             var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["Ngaygiao"]);
             ddh.NgayGiao = DateTime.Parse(ngaygiao);
             ddh.MaTTHD = 1;
             tthd.MaTTHD = (int)ddh.MaTTHD;
             data.tbDonHangs.InsertOnSubmit(ddh);
-            data.tbTinhTrangHoaDons.InsertOnSubmit(tthd);
-=======
-            //string nvc = collection["TenVanChuyen"];
-            //dONDATHANG.Ngaygiao = DateTime.Parse(ngaygiao);
-            dONDATHANG.TongTien = Decimal.Parse(TongTien().ToString());
-            dONDATHANG.MaTTHD = '1';
+            //data.tbTinhTrangHoaDons.InsertOnSubmit(tthd);
+
+            ddh.NgayGiao = DateTime.Parse(ngaygiao);
+            ddh.TongTien = Decimal.Parse(TongTien().ToString());
+            /*ddh.MaTTHD = '1'*/;
             //dONDATHANG.Dathanhtoan = false;
-            data.tbDonHangs.InsertOnSubmit(dONDATHANG);
->>>>>>> 8a0c76bc855100d9789c483ea546a8fa427ec19c
             data.SubmitChanges();
             foreach (var item in gioHangs)
             {
                 tbChiTietDonHang CT = new tbChiTietDonHang();
                 tbSanPham SP = new tbSanPham();
                 //DONDATHANG dONDATHANG = new DONDATHANG();
-                CT.MaDH = dONDATHANG.MaDH;
+                CT.MaDH = ddh.MaDH;
                 CT.MaSP = item.masp;
                 CT.SoLuong = item.soluong;
                 CT.DonGia = (decimal)item.dongia;
                 CT.ThanhTien = (decimal)item.thanhtien;
-                dONDATHANG.DiaChi = DiaChi;
+                ddh.DiaChi = DiaChi;
                 //              dONDATHANG.MaVC = Int32.Parse(nvc);
                 data.tbChiTietDonHangs.InsertOnSubmit(CT);
             }
