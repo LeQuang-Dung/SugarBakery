@@ -1,0 +1,32 @@
+﻿@model SugarBakery.Models.tbKhachHang
+@{
+    ViewBag.Title = "Thongtintk";
+    Layout = "~/Views/Layout/_LayoutLogin.cshtml";
+}
+<div class="text-center mb-5">
+    <h3 class="text-uppercase">THÔNG TIN CỦA BẠN</h3>
+</div>
+<form action="#" method="post">
+    <div class="form-group first">
+        <label>
+            Tên khách hàng: @Html.DisplayFor(model => model.TenKH)
+        </label>
+        <label>
+            Tên Đăng Nhập: @Html.DisplayFor(model => model.TaiKhoan)
+        </label>
+        <label>
+            Email: @Html.DisplayFor(model => model.Email)
+        </label>
+        <label>
+            Số điện thoại: @Html.DisplayFor(model => model.SDT)
+        </label>
+        <label>
+            Dịa Chỉ: @Html.DisplayFor(model => model.DiaChiKH)
+        </label>
+    </div>
+
+    <div>
+        <input type="submit" value="Đăng nhập" class="btn btn-block py-2 btn-primary">
+    </div>
+</form>
+
