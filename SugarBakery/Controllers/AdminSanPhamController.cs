@@ -224,43 +224,122 @@ namespace SugarBakery.Controllers
         }
 
         //----------------------------------- Loại Sản Phẩm ------------------------------------
-        public ActionResult DSloaisanpham()
+        public ActionResult DSloaisanpham(int? page)
         {
-
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            int pagesize = 8;
+            int pageNum = (page ?? 1);
+            var list = data.tbLoaiSanPhams.OrderByDescending(s => s.MaLoaiSP).ToList();
+            return View(list.ToPagedList(pageNum, pagesize));
         }
 
         [HttpGet]
         public ActionResult Themlsp()
         {
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            ViewBag.MaLoaiSP = new SelectList(data.tbLoaiSanPhams.ToList().OrderBy(n => n.MaLoaiSP), "MaLoaiSP", "TenLoaiSP", "MoTa");
             return View();
         }
         [HttpPost]
-        public ActionResult Themlsp( tbLoaiSanPham lsp)
+        public ActionResult Themlsp(tbLoaiSanPham lsp, FormCollection collection, HttpPostedFileBase fileUpload)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            ViewBag.MaLoaiSP = new SelectList(data.tbLoaiSanPhams.ToList().OrderBy(n => n.MaLoaiSP), "MaLoaiSP", "TenLoaiSP", "MoTa");
+            if (ModelState.IsValid)
+            {
+                data.tbLoaiSanPhams.InsertOnSubmit(lsp);
+                data.SubmitChanges();
+            }
+            return RedirectToAction("DSloaisanpham", "AdminSanPham");
         }
 
-        public ActionResult Sualsp()
+        public ActionResult Sualsp(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            tbLoaiSanPham lsp = data.tbLoaiSanPhams.SingleOrDefault(n => n.MaLoaiSP == id);
+            ViewBag.MaLoaiSP = new SelectList(data.tbLoaiSanPhams.ToList().OrderBy(n => n.MaLoaiSP), "MaLoaiSP", "TenLoaiSP", "MoTa", lsp.MaLoaiSP);
+            if (lsp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+
+            return View(lsp);
         }
 
         [HttpPost, ActionName("SuaLSP")]
-        public ActionResult XacNhanSualsp()
+        public ActionResult XacNhanSualsp(FormCollection collection, int id)
         {
-            return View();
+            var img = "";
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+
+            tbLoaiSanPham lsp = data.tbLoaiSanPhams.SingleOrDefault(n => n.MaLoaiSP == id);
+
+            if (lsp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            UpdateModel(lsp);
+            data.SubmitChanges();
+            return RedirectToAction("DSloaisanpham");
         }
 
         [HttpGet]
-        public ActionResult Xoalsp()
+        public ActionResult Xoalsp(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            else
+            {
+                tbLoaiSanPham lsp = data.tbLoaiSanPhams.SingleOrDefault(n => n.MaLoaiSP == id);
+
+                ViewBag.MaLoaiSP = lsp.MaLoaiSP;
+                if (lsp == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                return View(lsp);
+            }
         }
         [HttpPost, ActionName("XoaLSP")]
-        public ActionResult XacNhanXoalsp()
+        public ActionResult XacNhanXoalsp(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            else
+            {
+                tbLoaiSanPham lsp = data.tbLoaiSanPhams.SingleOrDefault(n => n.MaLoaiSP == id);
+                ViewBag.MaLoaiSP = lsp.MaLoaiSP;
+                if (lsp == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                data.tbLoaiSanPhams.DeleteOnSubmit(lsp);
+                data.SubmitChanges();
+                return RedirectToAction("DSloaisanpham");
+            }
         }
 
 
@@ -401,35 +480,107 @@ namespace SugarBakery.Controllers
         [HttpGet]
         public ActionResult ThemNcc()
         {
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            ViewBag.MaNCC = new SelectList(data.tbNhaCungCaps.ToList().OrderBy(n => n.TenNCC), "MaNCC", "TenNCC", "DiaChi");
             return View();
         }
         [HttpPost]
         public ActionResult ThemNcc(tbNhaCungCap ncc)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            ViewBag.MaNCC = new SelectList(data.tbNhaCungCaps.ToList().OrderBy(n => n.TenNCC), "MaNCC", "TenNCC", "DiaChi");
+            if (ModelState.IsValid)
+            {
+                data.tbNhaCungCaps.InsertOnSubmit(ncc);
+                data.SubmitChanges();
+            }
+            return RedirectToAction("DSncc", "AdminSanPham");
         }
 
         [HttpGet]
-        public ActionResult XoaNcc()
+        public ActionResult XoaNcc(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            else
+            {
+                tbNhaCungCap ncc = data.tbNhaCungCaps.SingleOrDefault(n => n.MaNCC == id);
+
+                ViewBag.MaNCC = ncc.MaNCC;
+                if (ncc == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                return View(ncc);
+            }
         }
         [HttpPost, ActionName("XoaNcc")]
-        public ActionResult XacNhanXoaNcc()
+        public ActionResult XacNhanXoaNcc(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            else
+            {
+                tbNhaCungCap ncc = data.tbNhaCungCaps.SingleOrDefault(n => n.MaNCC == id);
+                ViewBag.MaNCC = ncc.MaNCC;
+                if (ncc == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                data.tbNhaCungCaps.DeleteOnSubmit(ncc);
+                data.SubmitChanges();
+                return RedirectToAction("DSncc");
+            }
         }
 
         [HttpGet]
-        public ActionResult SuaNcc()
+        public ActionResult SuaNcc(int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+            tbNhaCungCap ncc = data.tbNhaCungCaps.SingleOrDefault(n => n.MaNCC == id);
+            ViewBag.MaNCC = new SelectList(data.tbNhaCungCaps.ToList().OrderBy(n => n.TenNCC), "MaBK", "TenBK", ncc.MaNCC);
+            if (ncc == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+
+            return View(ncc);
         }
 
         [HttpPost, ActionName("SuaNcc")]
-        public ActionResult XacNhanSuaNcc()
+        public ActionResult XacNhanSuaNcc( int id)
         {
-            return View();
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("SanPham", "SugarBakery");
+            }
+
+            tbNhaCungCap ncc = data.tbNhaCungCaps.SingleOrDefault(n => n.MaNCC == id);
+
+            if (ncc == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            UpdateModel(ncc);
+            data.SubmitChanges();
+            return RedirectToAction("DSncc");
         }
 
 
@@ -490,7 +641,7 @@ namespace SugarBakery.Controllers
         }
 
         [HttpPost, ActionName("Suadvt")]
-        public ActionResult XacNhanSuadvt(FormCollection collection, int id)
+        public ActionResult XacNhanSuadvt( int id)
         {
             if (Session["TKadmin"] == null)
             {
