@@ -22,7 +22,7 @@
             <tr style="text-align:center; ">
                 <td>@item.masp</td>
                 <td>@item.tensp</td>
-                <td><img src="~/Sản Phẩm/@item.anhbia" alt="Alternate Text" /></td>
+                <td><img src="~/images/sanpham/@item.anhbia" alt="Alternate Text" width="100" /></td>
                 @using (Html.BeginForm("CapNhatGioHang", "Giohang", new { @id = item.masp }))
                 {
                     <td><input type="number" min="1" name="Soluong" value="@item.soluong" style="background-color:white" /></td>

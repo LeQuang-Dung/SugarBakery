@@ -157,6 +157,10 @@ namespace SugarBakery.Controllers
             data.tbDonHangs.InsertOnSubmit(ddh);
             //data.tbTinhTrangHoaDons.InsertOnSubmit(tthd);
 
+            string NguoiNhan = collection["NguoiNhan"];
+            ddh.SDT = kh.SDT;
+            string GhiChu = collection["GhiChu"];
+
             ddh.NgayGiao = DateTime.Parse(ngaygiao);
             ddh.TongTien = Decimal.Parse(TongTien().ToString());
             /*ddh.MaTTHD = '1'*/;
@@ -173,6 +177,11 @@ namespace SugarBakery.Controllers
                 CT.DonGia = (decimal)item.dongia;
                 CT.ThanhTien = (decimal)item.thanhtien;
                 ddh.DiaChi = DiaChi;
+
+                ddh.NguoiNhan = NguoiNhan;
+                ddh.SDT = kh.SDT;
+                ddh.GhiChu = GhiChu;
+
                 //              dONDATHANG.MaVC = Int32.Parse(nvc);
                 data.tbChiTietDonHangs.InsertOnSubmit(CT);
             }

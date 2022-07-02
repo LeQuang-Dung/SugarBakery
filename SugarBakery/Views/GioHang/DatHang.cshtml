@@ -44,6 +44,7 @@
     <h1 style="text-align:center">Thông Tin Đặt Hàng</h1>
     @{
         tbKhachHang kh = (tbKhachHang)Session["Taikhoan"];
+        tbDonHang dh = new tbDonHang();
 
     }
 <table align="center">
@@ -53,6 +54,21 @@
         <tr style="height:40px">
             <td>Khách Hàng</td>
             <td style="font-weight:bold">@kh.TenKH</td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>Tên Người Nhận</td>
+            <td>
+                <div class="pom-agile">
+                    <input placeholder="Tên Người Nhận" name="NguoiNhan" class="pass" type="text" required="">
+                    <span class="icon2"><i aria-hidden="true"></i></span>
+                </div>
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>Email</td>
+            <td style="font-weight:bold">@kh.Email</td>
         </tr>
 
         <tr style="height:40px">
@@ -80,6 +96,16 @@
             <td>
                 <div class="pom-agile">
                     <input placeholder="Địa Chỉ" name="DiaChi" class="pass" type="text" required="">
+                    <span class="icon2"><i aria-hidden="true"></i></span>
+                </div>
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>Ghi Chú</td>
+            <td>
+                <div class="pom-agile">
+                    <input placeholder="Ghi Chú" name="GhiChu" class="pass" type="text" required="">
                     <span class="icon2"><i aria-hidden="true"></i></span>
                 </div>
             </td>
