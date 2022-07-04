@@ -1,8 +1,11 @@
-﻿
+﻿@model IEnumerable<SugarBakery.Models.tbSanPham>
+
 @{
     ViewBag.Title = "TrangChu";
     Layout = "~/Views/Layout/_LayoutUser.cshtml";
 }
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="~/Content/home.css">
 <!-- home section start -->
 
@@ -13,7 +16,7 @@
             <div class="content">
                 <span>Bánh Sinh Nhật</span>
                 <h3>Giảm Giá Đến 50%</h3>
-                <a href="#" class="btn">Shop Now</a>
+                <a href="@Url.Action("SanPham","SugarBakery")" class="btn">Shop Now</a>
             </div>
             <div class="img">
                 <img src="~/images/img/home-img-1.png" alt="">
@@ -24,7 +27,7 @@
             <div class="content">
                 <span>Freeship Với Hóa Đơn Trên 500.000vnđ</span>
                 <h3>Giảm Giá Đến 50%</h3>
-                <a href="#" class="btn">Shop Now</a>
+                <a href="@Url.Action("SanPham","SugarBakery")" class="btn">Shop Now</a>
             </div>
             <div class="img">
                 <img src="~/images/img/home-img-2.png" alt="">
@@ -35,7 +38,7 @@
             <div class="content">
                 <span>Giao Hàng Tận Nơi Trong Vòng 30 Phút</span>
                 <h3>Giảm Giá Đến 50%</h3>
-                <a href="#" class="btn">Shop Now</a>
+                <a href="@Url.Action("SanPham","SugarBakery")" class="btn">Shop Now</a>
             </div>
             <div class="img">
                 <img src="~/images/img/home-img-3.png" alt="">
@@ -56,7 +59,7 @@
         <div class="content">
             <span>Flash Sale</span>
             <h3>Giảm Giá Đến 50%</h3>
-            <a href="#" class="btn">Shop Now</a>
+            <a href="@Url.Action("SanPham","SugarBakery")" class="btn">Shop Now</a>
         </div>
     </div>
 
@@ -65,7 +68,7 @@
         <div class="content">
             <span>Flash Sale</span>
             <h3>Giảm Giá Đến 50%</h3>
-            <a href="#" class="btn">Shop Now</a>
+            <a href="@Url.Action("SanPham","SugarBakery")" class="btn">Shop Now</a>
         </div>
     </div>
 
@@ -74,253 +77,60 @@
         <div class="content">
             <span>Flash Sale</span>
             <h3>Giảm Giá Đến 50%</h3>
-            <a href="#" class="btn">Shop Now</a>
+            <a href="@Url.Action("SanPham","SugarBakery")" class="btn">Shop Now</a>
         </div>
     </div>
 
 </section>
 
 
-<!-- category start  -->
+<section class="products; category">
 
-<div class="heading">
-    <h1>Sản Phẩm Của Chúng Tôi</h1>
-</div>
-
-<section class="category">
-
-    <h1 class="title"> Danh Mục <span>Sản Phẩm</span> <a href="#">Xem Tất Cả >></a> </h1>
+    <h1 class="title"> Sản Phẩm <span>Nổi Bật</span> <a href="@Url.Action("SanPham","SugarBakery")">Xem Tất Cả >></a> </h1>
 
     <div class="box-container">
-
-        <a href="#" class="box">
-            <img src="~/images/img/cat-1.jpg" alt="">
-            <h3>Bánh Kem</h3>
-        </a>
-
-        <a href="#" class="box">
-            <img src="~/images/img/cat-2.jpg" alt="">
-            <h3>Bánh Cookies</h3>
-        </a>
-
-        <a href="#" class="box">
-            <img src="~/images/img/cat-3.jpg" alt="">
-            <h3>Bánh Mì</h3>
-        </a>
-
-        <a href="#" class="box">
-            <img src="~/images/img/cat-4.jpg" alt="">
-            <h3>Sô cô la</h3>
-        </a>
-
-        <a href="#" class="box">
-            <img src="~/images/img/cat-5.jpg" alt="">
-            <h3>Nguyên Liệu</h3>
-        </a>
-
-
-    </div>
-
-</section>
-
-
-<!-- products section -->
-
-<section class="products">
-
-    <h1 class="title"> Sản Phẩm <span>Nổi Bật</span> <a href="#">Xem Tất Cả >></a> </h1>
-
-    <div class="box-container">
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <div class="img">
-                <img src="~/images/img/product-1.jpg" alt="">
-            </div>
-            <div class="content">
-                <h3>Bánh Kem Trái Cây</h3>
-                <div class="price">200.000vnđ</div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
+        @foreach (var sanpham in Model)
+        {
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <a href="@Url.Action("ChiTiet", "SugarBakery", new { id = @sanpham.MaSP })">
+                        <img alt="@sanpham.TenSP" src="~/images/sanpham/@sanpham.AnhSP" style="width:170px; height:200px" />
+                        <div>
+                            <br />
+                            <h6 style="text-align:center; height:30px">
+                                @sanpham.TenSP
+                            </h6>
+                            <br />
+                        </div>
+                    </a>
+                    <div class="caption" style="margin-bottom:10px">
+                        <p><strong> Giá: </strong> @String.Format("{0:0,0}", sanpham.GiaBan) VNĐ</p>
+                        <div id="Datmua">
+                            <a href="@Url.Action("ThemGiohang", "GioHang", new { @masp = sanpham.MaSP, @strURL = Request.Url.ToString() })">
+                                ĐẶT MUA
+                            </a>
+                        </div>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <div class="img">
-                <img src="~/images/img/product-2.jpg" alt="">
-            </div>
-            <div class="content">
-                <h3>Bánh Mì Trái Cây</h3>
-                <div class="price">150.000vnđ</div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <div class="img">
-                <img src="~/images/img/product-3.jpg" alt="">
-            </div>
-            <div class="content">
-                <h3>Bánh Kem Tình Yêu</h3>
-                <div class="price">250.000vnđ</div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <div class="img">
-                <img src="~/images/img/product-4.jpg" alt="">
-            </div>
-            <div class="content">
-                <h3>Bánh Dâu</h3>
-                <div class="price">300.000vnđ</div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <div class="img">
-                <img src="~/images/img/product-5.jpg" alt="">
-            </div>
-            <div class="content">
-                <h3>Bánh Kem Táo Xanh</h3>
-                <div class="price">200.000vnđ</div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <div class="img">
-                <img src="~/images/img/product-6.jpg" alt="">
-            </div>
-            <div class="content">
-                <h3>Bánh Kem Thanh Long Phủ Tuyết</h3>
-                <div class="price">200.000vnđ</div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <div class="img">
-                <img src="~/images/img/product-7.jpg" alt="">
-            </div>
-            <div class="content">
-                <h3>Bánh Kem Dâu Tây</h3>
-                <div class="price">250.000vnđ</div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-            </div>
-            <div class="img">
-                <img src="~/images/img/product-8.jpg" alt="">
-            </div>
-            <div class="content">
-                <h3>Bánh Kem Sô Cô La</h3>
-                <div class="price">200.000vnđ</div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </section>
 
 
 <!-- about section start -->
-<div class="heading">
-    <h1>Về Chúng Tôi</h1>
-</div>
 
 <section class="about">
     <div class="img">
         <img src="~/images/img/sugar.png" alt="">
     </div>
-
     <div class="content">
         <span>Chào Mừng Bạn Đén Với Tiệm Bánh Sugar</span>
         <h3>Sugar Bakery</h3>
@@ -328,13 +138,14 @@
             Được thành lập vào tháng 5 năm 2022 với 4 thành viên cực kì tâm huyết, Sugar Bakery tự tin là một trong những tiệm bánh hàng đầu ở TP.HCM, với mong muốn đem lại cho khách hàng những chiếc bánh tươi ngon mới ra lò và giá thành hợp lý. Sugar
             Bakery luôn mong muốn khách hàng sẽ nhận được những chiếc bánh ngon nhất, giúp khách hàng ngon miệng.
         </p>
+        <h6 class="title"><a href="@Url.Action("GioiThieu","Home")">Về chúng tôi >>></a> </h6>
     </div>
 </section>
 
 <!-- gallery section start -->
 
 <section class="gallery">
-    <h1 class="title"> Bộ Sưu Tập <span>Ảnh</span> <a href="#">Xem Tất Cả >></a> </h1>
+    <h1 class="title"> Bộ Sưu Tập <span>Ảnh</span> <a href="@Url.Action("SanPham","SugarBakery")">Xem Tất Cả >></a> </h1>
     <div class="box-container">
 
         <div class="box">
@@ -433,3 +244,209 @@
 
 <!-- custom js file link -->
 <script src="~/Scripts/main.js"></script>
+
+<style>
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .thumbnail {
+        /*width: 250px;
+        float: left;
+        padding: 0;*/
+        margin: 10px auto;
+        position: relative;
+        width: 320px;
+        height: 420px;
+        background: #EEEBDA;
+        border-radius: 20px;
+        overflow: hidden;
+        /*box-shadow: 10px 5px #ebebeb;*/
+    }
+
+        .thumbnail:hover::before {
+            top: -75%;
+            transform: skewY(390deg);
+        }
+
+        .thumbnail::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            font-weight: 600;
+            font-size: 8em;
+            color: rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail img {
+            position: relative;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+            z-index: 1;
+            max-height: 100%;
+            max-width: 100%;
+            transition: 0.5s;
+        }
+
+        .thumbnail:hover img {
+            max-width: 50%;
+            max-height: 50%;
+        }
+
+        .thumbnail .caption {
+            position: relative;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+            .thumbnail .caption h3 {
+                font-size: 10px;
+                color: aliceblue;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .thumbnail .caption .pull-right {
+                font-size: 24px;
+                color: aliceblue;
+                font-weight: 500;
+                text-transform: none;
+                letter-spacing: 1px;
+            }
+
+        .thumbnail .buy {
+            position: relative;
+            top: 200px;
+            opacity: 0;
+            margin: 0 auto;
+            padding: 8px 30px;
+            margin-top: 0px;
+            color: aliceblue;
+            text-decoration: none;
+            background: #938f63;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.5s;
+            font-weight: bold;
+        }
+
+            .thumbnail .buy:hover {
+                background-color: #fcf5c7;
+                color: black;
+                font-weight: bold;
+            }
+
+        .thumbnail:hover .buy {
+            top: 0;
+            position: relative;
+            opacity: 10;
+        }
+
+    div#Datmua {
+        clear: both;
+        background-color: darkgreen;
+        width: 100px;
+        height: 35px;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        padding-top: 8px;
+        margin-bottom: 15px;
+        border-radius: 12px;
+    }
+
+    #Datmua a {
+        color: white;
+    }
+
+    /*.MenuTrang li {
+        display: inline-block;
+        box-sizing: border-box;
+        border: 1px solid #e1e1e1;
+        margin: 1px;
+        border-radius: 2px;
+        padding: 5px 10px;
+        text-align: center;
+        justify-content: center;
+    }*/
+    .pagination {
+        list-style: none;
+        display: inline-block;
+        padding: 0;
+        margin-top: 10px;
+        text-align: center
+    }
+
+        .pagination li {
+            display: inline;
+            text-align: center;
+        }
+
+        .pagination a {
+            float: left;
+            display: block;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 5px 12px;
+            color: #fff;
+            margin-left: -1px;
+            border: 1px solid transparent;
+            line-height: 1.5;
+        }
+
+            .pagination a.active {
+                cursor: default;
+            }
+
+            .pagination a:active {
+                outline: none;
+            }
+
+    .modal-4 a {
+        margin: 0 5px;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        -moz-border-radius: 100%;
+        -webkit-border-radius: 100%;
+        border-radius: 100%;
+        background-color: #F7C12C;
+        text-align: center;
+    }
+
+        .modal-4 a.prev {
+            -moz-border-radius: 50px 0 0 50px;
+            -webkit-border-radius: 50px;
+            border-radius: 50px 0 0 50px;
+            width: 100px;
+        }
+
+        .modal-4 a.next {
+            -moz-border-radius: 0 50px 50px 0;
+            -webkit-border-radius: 0;
+            border-radius: 0 50px 50px 0;
+            width: 100px;
+        }
+
+        .modal-4 a:hover {
+            background-color: #FFA500;
+        }
+
+        .modal-4 a.active, .modal-4 a:active {
+            background-color: #FFA100;
+        }
+</style>

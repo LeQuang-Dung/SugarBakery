@@ -13,9 +13,18 @@ namespace SugarBakery.Controllers
     {
         dbSugarBakeryDataContext data = new dbSugarBakeryDataContext();
 
+        // GET: SugarBakery
+        private List<tbSanPham> Laysanpham(int count)
+        {
+            return data.tbSanPhams.OrderByDescending(a => a.MaSP).Take(count).ToList();
+        }
         public ActionResult TrangChu()
         {
-            return View();
+            //Lay top 6 san pham ban chay nhat
+            var sanpham = Laysanpham(4);
+            string s = Request.QueryString["s"];
+            if (!string.IsNullOrEmpty(s)) sanpham = data.tbSanPhams.OrderByDescending(a => a.MaSP).Take(4).Where(w => w.TenSP.Contains(s)).ToList();
+            return View(sanpham);
         }
 
         public ActionResult GioiThieu()
@@ -32,13 +41,11 @@ namespace SugarBakery.Controllers
         {
             return View();
         }
-
         [HttpGet]
         public ActionResult LienHe()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult LienHe(FormCollection collection)
         {

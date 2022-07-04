@@ -2438,7 +2438,6 @@
     <Content Include="Views\Layout\_LayoutContact.cshtml" />
     <Content Include="Views\Layout\_LayoutLogin.cshtml" />
     <Content Include="Views\SugarBakery\SanPham.cshtml" />
-    <Content Include="Views\Home\TrangChu.cshtml" />
     <Content Include="Views\Home\GioiThieu.cshtml" />
     <Content Include="Views\Home\TinTuc.cshtml" />
     <Content Include="Views\Home\LienHe.cshtml" />
@@ -2495,6 +2494,7 @@
     <Content Include="Views\AdminSanPham\ThemNcc.cshtml" />
     <Content Include="Views\AdminSanPham\XoaNcc.cshtml" />
     <Content Include="Views\AdminSanPham\SuaNcc.cshtml" />
+    <Content Include="Views\Home\TrangChu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

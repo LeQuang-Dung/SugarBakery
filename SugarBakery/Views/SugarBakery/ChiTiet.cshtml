@@ -1,23 +1,4 @@
-﻿<style type="text/css">
-    #Datmua a {
-        clear: both;
-        background-color: red;
-        color: white;
-        width: 120px;
-        height: 35px;
-        display: block;
-        float: right;
-        text-align: center;
-        padding-top: 10px;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-        #Datmua a:hover {
-            background-color: gray;
-            color: red;
-        }
-</style>
+﻿
 
 @{
     ViewBag.Title = "ChiTiet";
@@ -46,11 +27,31 @@
             </span>
         </p>
     </div>
-    <div>
-        <div id="Datmua">
-            <a href="@Url.Action("ThemGiohang", "GioHang", new {@iMaSP = @Model.MaSP, @strURL=Request.Url.ToString() })">
-                ĐẶT MUA
-            </a>
-        </div>
+    <div id="Datmua">
+        <a href="@Url.Action("ThemGiohang", "GioHang", new {@masp = @Model.MaSP, @strURL=Request.Url.ToString() })">
+            ĐẶT MUA
+        </a>
     </div>
 </div>
+
+
+<style type="text/css">
+    #Datmua a {
+        clear: both;
+        background-color: red;
+        color: white;
+        width: 120px;
+        height: 35px;
+        display: block;
+        float: right;
+        text-align: center;
+        padding-top: 10px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        #Datmua a:hover {
+            background-color: gray;
+            color: red;
+        }
+</style>
