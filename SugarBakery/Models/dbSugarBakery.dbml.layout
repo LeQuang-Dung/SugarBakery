@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 18.75" name="dbSugarBakery">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 19.375" name="dbSugarBakery">
   <DataContextMoniker Name="/dbSugarBakeryDataContext" />
   <nestedChildShapes>
     <classShape Id="dedc5c27-c62b-4af0-9233-1e07df09b8f0" absoluteBounds="11.75, 1.875, 2, 1.3862939453125003">
@@ -80,12 +80,6 @@
         <elementListCompartment Id="ebe845f0-5d79-4d05-a491-81fd4ffe3c74" absoluteBounds="0.765, 7.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="8f9c4970-6851-49d3-940c-f279ef9265e1" absoluteBounds="6.25, 16.875, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbPhanHoiKH" />
-      <nestedChildShapes>
-        <elementListCompartment Id="6f21b271-6428-4f4c-ad92-858fcf6c70de" absoluteBounds="6.265, 17.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="54aa4f00-83bc-426c-a6d0-0476d6790e76" absoluteBounds="11.75, 9.875, 2, 1.3862939453124987">
       <DataClassMoniker Name="/dbSugarBakeryDataContext/tbQuangCao" />
       <nestedChildShapes>
@@ -137,13 +131,6 @@
       <nodes>
         <classShapeMoniker Id="a6f69990-58ef-42b0-abed-7767b02e3812" />
         <classShapeMoniker Id="6ff84d76-0b82-45d5-91a9-777883099d08" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(4.5 : 16.7228011067708); (4.5 : 17.6642976888021); (6.25 : 17.6642976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbKhachHang/tbKhachHang_tbPhanHoiKH" />
-      <nodes>
-        <classShapeMoniker Id="d989e695-69b2-4988-8d4f-356c4cb98e43" />
-        <classShapeMoniker Id="8f9c4970-6851-49d3-940c-f279ef9265e1" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(7.25 : 8.85740397135417); (7.25 : 11.9815991210937); (9 : 11.9815991210937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
@@ -200,6 +187,19 @@
       <nodes>
         <classShapeMoniker Id="cd090555-8a92-4adc-8743-8366e5841bea" />
         <classShapeMoniker Id="5f2730f0-e14a-414b-9dca-0c173837c037" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4d0c7336-1b19-498b-a17e-ebb719970e8f" absoluteBounds="5.625, 17.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/dbSugarBakeryDataContext/tbPhanHoiKH" />
+      <nestedChildShapes>
+        <elementListCompartment Id="93390710-3a22-4f3b-a370-b0affe530165" absoluteBounds="5.64, 18.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.5 : 16.7228011067708); (4.5 : 18.4431469726563); (5.625 : 18.4431469726563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbSugarBakeryDataContext/tbKhachHang/tbKhachHang_tbPhanHoiKH" />
+      <nodes>
+        <classShapeMoniker Id="d989e695-69b2-4988-8d4f-356c4cb98e43" />
+        <classShapeMoniker Id="4d0c7336-1b19-498b-a17e-ebb719970e8f" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

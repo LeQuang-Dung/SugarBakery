@@ -69,9 +69,6 @@ namespace SugarBakery.Models
     partial void InserttbNhom(tbNhom instance);
     partial void UpdatetbNhom(tbNhom instance);
     partial void DeletetbNhom(tbNhom instance);
-    partial void InserttbPhanHoiKH(tbPhanHoiKH instance);
-    partial void UpdatetbPhanHoiKH(tbPhanHoiKH instance);
-    partial void DeletetbPhanHoiKH(tbPhanHoiKH instance);
     partial void InserttbQuangCao(tbQuangCao instance);
     partial void UpdatetbQuangCao(tbQuangCao instance);
     partial void DeletetbQuangCao(tbQuangCao instance);
@@ -81,6 +78,9 @@ namespace SugarBakery.Models
     partial void InserttbSanPhamKhuyenMai(tbSanPhamKhuyenMai instance);
     partial void UpdatetbSanPhamKhuyenMai(tbSanPhamKhuyenMai instance);
     partial void DeletetbSanPhamKhuyenMai(tbSanPhamKhuyenMai instance);
+    partial void InserttbPhanHoiKH(tbPhanHoiKH instance);
+    partial void UpdatetbPhanHoiKH(tbPhanHoiKH instance);
+    partial void DeletetbPhanHoiKH(tbPhanHoiKH instance);
     #endregion
 		
 		public dbSugarBakeryDataContext() : 
@@ -217,14 +217,6 @@ namespace SugarBakery.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<tbPhanHoiKH> tbPhanHoiKHs
-		{
-			get
-			{
-				return this.GetTable<tbPhanHoiKH>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tbQuangCao> tbQuangCaos
 		{
 			get
@@ -246,6 +238,14 @@ namespace SugarBakery.Models
 			get
 			{
 				return this.GetTable<tbSanPhamKhuyenMai>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbPhanHoiKH> tbPhanHoiKHs
+		{
+			get
+			{
+				return this.GetTable<tbPhanHoiKH>();
 			}
 		}
 	}
@@ -1649,7 +1649,7 @@ namespace SugarBakery.Models
 		
 		private EntitySet<tbDonHang> _tbDonHangs;
 		
-		private EntityRef<tbPhanHoiKH> _tbPhanHoiKH;
+		private EntitySet<tbPhanHoiKH> _tbPhanHoiKHs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1676,7 +1676,7 @@ namespace SugarBakery.Models
 		public tbKhachHang()
 		{
 			this._tbDonHangs = new EntitySet<tbDonHang>(new Action<tbDonHang>(this.attach_tbDonHangs), new Action<tbDonHang>(this.detach_tbDonHangs));
-			this._tbPhanHoiKH = default(EntityRef<tbPhanHoiKH>);
+			this._tbPhanHoiKHs = new EntitySet<tbPhanHoiKH>(new Action<tbPhanHoiKH>(this.attach_tbPhanHoiKHs), new Action<tbPhanHoiKH>(this.detach_tbPhanHoiKHs));
 			OnCreated();
 		}
 		
@@ -1853,32 +1853,16 @@ namespace SugarBakery.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbKhachHang_tbPhanHoiKH", Storage="_tbPhanHoiKH", ThisKey="MaKH", OtherKey="MaKH", IsUnique=true, IsForeignKey=false)]
-		public tbPhanHoiKH tbPhanHoiKH
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbKhachHang_tbPhanHoiKH", Storage="_tbPhanHoiKHs", ThisKey="MaKH", OtherKey="MaKH")]
+		public EntitySet<tbPhanHoiKH> tbPhanHoiKHs
 		{
 			get
 			{
-				return this._tbPhanHoiKH.Entity;
+				return this._tbPhanHoiKHs;
 			}
 			set
 			{
-				tbPhanHoiKH previousValue = this._tbPhanHoiKH.Entity;
-				if (((previousValue != value) 
-							|| (this._tbPhanHoiKH.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tbPhanHoiKH.Entity = null;
-						previousValue.tbKhachHang = null;
-					}
-					this._tbPhanHoiKH.Entity = value;
-					if ((value != null))
-					{
-						value.tbKhachHang = this;
-					}
-					this.SendPropertyChanged("tbPhanHoiKH");
-				}
+				this._tbPhanHoiKHs.Assign(value);
 			}
 		}
 		
@@ -1909,6 +1893,18 @@ namespace SugarBakery.Models
 		}
 		
 		private void detach_tbDonHangs(tbDonHang entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbKhachHang = null;
+		}
+		
+		private void attach_tbPhanHoiKHs(tbPhanHoiKH entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbKhachHang = this;
+		}
+		
+		private void detach_tbPhanHoiKHs(tbPhanHoiKH entity)
 		{
 			this.SendPropertyChanging();
 			entity.tbKhachHang = null;
@@ -3036,181 +3032,6 @@ namespace SugarBakery.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbPhanHoiKH")]
-	public partial class tbPhanHoiKH : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaKH;
-		
-		private string _Email;
-		
-		private string _HoTen;
-		
-		private string _LyDo;
-		
-		private EntityRef<tbKhachHang> _tbKhachHang;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaKHChanging(int value);
-    partial void OnMaKHChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnHoTenChanging(string value);
-    partial void OnHoTenChanged();
-    partial void OnLyDoChanging(string value);
-    partial void OnLyDoChanged();
-    #endregion
-		
-		public tbPhanHoiKH()
-		{
-			this._tbKhachHang = default(EntityRef<tbKhachHang>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKH", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MaKH
-		{
-			get
-			{
-				return this._MaKH;
-			}
-			set
-			{
-				if ((this._MaKH != value))
-				{
-					if (this._tbKhachHang.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaKHChanging(value);
-					this.SendPropertyChanging();
-					this._MaKH = value;
-					this.SendPropertyChanged("MaKH");
-					this.OnMaKHChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(100)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoTen", DbType="NVarChar(50)")]
-		public string HoTen
-		{
-			get
-			{
-				return this._HoTen;
-			}
-			set
-			{
-				if ((this._HoTen != value))
-				{
-					this.OnHoTenChanging(value);
-					this.SendPropertyChanging();
-					this._HoTen = value;
-					this.SendPropertyChanged("HoTen");
-					this.OnHoTenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDo", DbType="NVarChar(MAX)")]
-		public string LyDo
-		{
-			get
-			{
-				return this._LyDo;
-			}
-			set
-			{
-				if ((this._LyDo != value))
-				{
-					this.OnLyDoChanging(value);
-					this.SendPropertyChanging();
-					this._LyDo = value;
-					this.SendPropertyChanged("LyDo");
-					this.OnLyDoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbKhachHang_tbPhanHoiKH", Storage="_tbKhachHang", ThisKey="MaKH", OtherKey="MaKH", IsForeignKey=true)]
-		public tbKhachHang tbKhachHang
-		{
-			get
-			{
-				return this._tbKhachHang.Entity;
-			}
-			set
-			{
-				tbKhachHang previousValue = this._tbKhachHang.Entity;
-				if (((previousValue != value) 
-							|| (this._tbKhachHang.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tbKhachHang.Entity = null;
-						previousValue.tbPhanHoiKH = null;
-					}
-					this._tbKhachHang.Entity = value;
-					if ((value != null))
-					{
-						value.tbPhanHoiKH = this;
-						this._MaKH = value.MaKH;
-					}
-					else
-					{
-						this._MaKH = default(int);
-					}
-					this.SendPropertyChanged("tbKhachHang");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbQuangCao")]
 	public partial class tbQuangCao : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3977,6 +3798,157 @@ namespace SugarBakery.Models
 						this._MaSP = default(int);
 					}
 					this.SendPropertyChanged("tbSanPham");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbPhanHoiKH")]
+	public partial class tbPhanHoiKH : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _STT;
+		
+		private string _LyDo;
+		
+		private int _MaKH;
+		
+		private EntityRef<tbKhachHang> _tbKhachHang;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSTTChanging(int value);
+    partial void OnSTTChanged();
+    partial void OnLyDoChanging(string value);
+    partial void OnLyDoChanged();
+    partial void OnMaKHChanging(int value);
+    partial void OnMaKHChanged();
+    #endregion
+		
+		public tbPhanHoiKH()
+		{
+			this._tbKhachHang = default(EntityRef<tbKhachHang>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STT", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int STT
+		{
+			get
+			{
+				return this._STT;
+			}
+			set
+			{
+				if ((this._STT != value))
+				{
+					this.OnSTTChanging(value);
+					this.SendPropertyChanging();
+					this._STT = value;
+					this.SendPropertyChanged("STT");
+					this.OnSTTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LyDo", DbType="NVarChar(MAX)")]
+		public string LyDo
+		{
+			get
+			{
+				return this._LyDo;
+			}
+			set
+			{
+				if ((this._LyDo != value))
+				{
+					this.OnLyDoChanging(value);
+					this.SendPropertyChanging();
+					this._LyDo = value;
+					this.SendPropertyChanged("LyDo");
+					this.OnLyDoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKH", DbType="Int NOT NULL")]
+		public int MaKH
+		{
+			get
+			{
+				return this._MaKH;
+			}
+			set
+			{
+				if ((this._MaKH != value))
+				{
+					if (this._tbKhachHang.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaKHChanging(value);
+					this.SendPropertyChanging();
+					this._MaKH = value;
+					this.SendPropertyChanged("MaKH");
+					this.OnMaKHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbKhachHang_tbPhanHoiKH", Storage="_tbKhachHang", ThisKey="MaKH", OtherKey="MaKH", IsForeignKey=true)]
+		public tbKhachHang tbKhachHang
+		{
+			get
+			{
+				return this._tbKhachHang.Entity;
+			}
+			set
+			{
+				tbKhachHang previousValue = this._tbKhachHang.Entity;
+				if (((previousValue != value) 
+							|| (this._tbKhachHang.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbKhachHang.Entity = null;
+						previousValue.tbPhanHoiKHs.Remove(this);
+					}
+					this._tbKhachHang.Entity = value;
+					if ((value != null))
+					{
+						value.tbPhanHoiKHs.Add(this);
+						this._MaKH = value.MaKH;
+					}
+					else
+					{
+						this._MaKH = default(int);
+					}
+					this.SendPropertyChanged("tbKhachHang");
 				}
 			}
 		}

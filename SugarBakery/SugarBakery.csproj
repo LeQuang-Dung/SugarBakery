@@ -1911,7 +1911,9 @@
     <Content Include="images\blank.jpg" />
     <Content Include="images\cart.jpg" />
     <Content Include="images\ContactDesktophtml_row0.jpg" />
+    <Content Include="images\contact\fbbb.jpg" />
     <Content Include="images\contact\fb.png" />
+    <Content Include="images\contact\ig.jpg" />
     <Content Include="images\contact\instagram.png" />
     <Content Include="images\contact\twitter.png" />
     <Content Include="images\footerfacebook.png" />

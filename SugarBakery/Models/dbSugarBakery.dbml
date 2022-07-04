@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SugarBakery" Class="dbSugarBakeryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=MSI;Initial Catalog=SugarBakery;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SugarBakeryConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-35S9MS1\SQLEXPRESS;Initial Catalog=SugarBakery;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SugarBakeryConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.tbAdmin" Member="tbAdmins">
     <Type Name="tbAdmin">
       <Column Name="UserAdmin" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -81,7 +81,7 @@
       <Column Name="DiaChiKH" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="NgaySinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="tbKhachHang_tbDonHang" Member="tbDonHangs" ThisKey="MaKH" OtherKey="MaKH" Type="tbDonHang" />
-      <Association Name="tbKhachHang_tbPhanHoiKH" Member="tbPhanHoiKH" ThisKey="MaKH" OtherKey="MaKH" Type="tbPhanHoiKH" Cardinality="One" />
+      <Association Name="tbKhachHang_tbPhanHoiKH" Member="tbPhanHoiKHs" ThisKey="MaKH" OtherKey="MaKH" Type="tbPhanHoiKH" />
     </Type>
   </Table>
   <Table Name="dbo.tbKhuyenMai" Member="tbKhuyenMais">
@@ -140,15 +140,6 @@
       <Association Name="tbNhom_tbLoaiSanPham" Member="tbLoaiSanPhams" ThisKey="MaNhom" OtherKey="MaNhom" Type="tbLoaiSanPham" />
     </Type>
   </Table>
-  <Table Name="dbo.tbPhanHoiKH" Member="tbPhanHoiKHs">
-    <Type Name="tbPhanHoiKH">
-      <Column Name="MaKH" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="LyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="tbKhachHang_tbPhanHoiKH" Member="tbKhachHang" ThisKey="MaKH" OtherKey="MaKH" Type="tbKhachHang" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tbQuangCao" Member="tbQuangCaos">
     <Type Name="tbQuangCao">
       <Column Name="MaQuangCao" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -183,6 +174,14 @@
       <Column Name="MaSP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="tbKhuyenMai_tbSanPhamKhuyenMai" Member="tbKhuyenMai" ThisKey="MaSPKM" OtherKey="MaSPKM" Type="tbKhuyenMai" IsForeignKey="true" />
       <Association Name="tbSanPham_tbSanPhamKhuyenMai" Member="tbSanPham" ThisKey="MaSP" OtherKey="MaSP" Type="tbSanPham" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbPhanHoiKH" Member="tbPhanHoiKHs">
+    <Type Name="tbPhanHoiKH">
+      <Column Name="STT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LyDo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaKH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbKhachHang_tbPhanHoiKH" Member="tbKhachHang" ThisKey="MaKH" OtherKey="MaKH" Type="tbKhachHang" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

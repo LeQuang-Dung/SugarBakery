@@ -51,8 +51,6 @@ namespace SugarBakery.Controllers
                 tbPhanHoiKH ht = new tbPhanHoiKH();
                 tbKhachHang kh = (tbKhachHang)Session["Taikhoan"];
                 ht.MaKH = kh.MaKH;
-                ht.HoTen = kh.TenKH;
-                ht.Email = kh.Email;
                 string lydo = collection["LyDo"];
                 ht.LyDo = lydo;
                 if (lydo == null)

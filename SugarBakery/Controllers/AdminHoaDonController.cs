@@ -38,7 +38,7 @@ namespace SugarBakery.Controllers
             }
             int pagesize = 8;
             int pageNum = (page ?? 1);
-            var list = data.tbPhanHoiKHs.OrderByDescending(n => n.MaKH).ToList();
+            var list = data.tbPhanHoiKHs.OrderByDescending(n => n.STT).ToList();
             return View(list.ToPagedList(pageNum, pagesize));
         }
 
@@ -48,7 +48,7 @@ namespace SugarBakery.Controllers
             {
                 return RedirectToAction("SanPham", "SugarBakery");
             }
-            tbPhanHoiKH ph = data.tbPhanHoiKHs.SingleOrDefault(n => n.MaKH == id);
+            tbPhanHoiKH ph = data.tbPhanHoiKHs.SingleOrDefault(n => n.STT == id);
             if (ph == null)
             {
                 Response.StatusCode = 404;
@@ -65,8 +65,8 @@ namespace SugarBakery.Controllers
             }
             else
             {
-                tbPhanHoiKH ph = data.tbPhanHoiKHs.SingleOrDefault(n => n.MaKH == id);
-                ViewBag.MaKH = ph.MaKH;
+                tbPhanHoiKH ph = data.tbPhanHoiKHs.SingleOrDefault(n => n.STT == id);
+                ViewBag.STT = ph.STT;
                 if (ph == null)
                 {
                     Response.StatusCode = 404;
@@ -84,8 +84,8 @@ namespace SugarBakery.Controllers
             }
             else
             {
-                tbPhanHoiKH ph = data.tbPhanHoiKHs.SingleOrDefault(n => n.MaKH == id);
-                ViewBag.MaKH = ph.MaKH;
+                tbPhanHoiKH ph = data.tbPhanHoiKHs.SingleOrDefault(n => n.STT == id);
+                ViewBag.STT = ph.STT;
                 if (ph == null)
                 {
                     Response.StatusCode = 404;
@@ -209,10 +209,10 @@ namespace SugarBakery.Controllers
         [HttpGet]
         public ActionResult Suadonhang(int id)
         {
-            //if (Session["TKadmin"] == null)
-            //{
-            //    return RedirectToAction("Index", "SugarBakery");
-            //}
+            if (Session["TKadmin"] == null)
+            {
+                return RedirectToAction("Index", "SugarBakery");
+            }
 
             tbDonHang dh = data.tbDonHangs.SingleOrDefault(n => n.MaDH == id);
             if (dh == null)

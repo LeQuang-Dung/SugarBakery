@@ -2,6 +2,7 @@
 @using PagedList.Mvc
 @model PagedList.PagedList<SugarBakery.Models.tbPhanHoiKH>
 
+
 @helper  Truncate(string input, int length)
 {
     if (input.Length < length)
@@ -26,6 +27,7 @@
 
 <table class="table" border="1">
     <tr>
+        <th style="width: 70px; text-align: center"> Số thứ tự </th>
         <th style="width: 200px; text-align: center"> Mã Khách hàng </th>
         <th style="width: 200px; text-align: center"> Tên khách hàng </th>
         <th style="width: 200px; text-align: center"> Email </th>
@@ -36,21 +38,24 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.STT)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.MaKH)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HoTen)
+                @Html.DisplayFor(modelItem => item.tbKhachHang.TenKH)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @Html.DisplayFor(modelItem => item.tbKhachHang.Email)
             </td>
             <td>
                 @*@Html.DisplayFor(modelItem => item.LyDo)*@
                 @Truncate(item.LyDo, 50)
             </td>
             <td>
-                @Html.ActionLink("Chi tiết", "ChiTietPhanHoi", new { id = item.MaKH }, new { @class = "btn btn-success" }) |
-                @Html.ActionLink("Xóa", "XoaPhanHoi", new { id = item.MaKH }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Chi tiết", "ChiTietPhanHoi", new { id = item.STT }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Xóa", "XoaPhanHoi", new { id = item.STT }, new { @class = "btn btn-success" }) |
             </td>
         </tr>
     }
@@ -61,14 +66,6 @@
 </div>
 
 <style>
-    /*.MenuTrang li {
-        display: inline-block;
-        box-sizing: border-box;
-        border: 1px solid #e1e1e1;
-        margin: 1px;
-        border-radius: 2px;
-        padding: 5px 10px;
-    }*/
     .pagination {
         position: relative;
         background: #fff;
